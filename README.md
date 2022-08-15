@@ -13,4 +13,3 @@ we will use pull requests with github for the workflow.
 
 bootstrap premade OpenClassrooms template
 twig
-other
