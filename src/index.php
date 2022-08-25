@@ -11,20 +11,25 @@
 <body>
     <h1>Alexis Troïtzky</h1>
     <h2>Je fabrique des programmes et des sites avec mes mains pleines de doigts</h2>
-    <img src="../assets/images/alex.png" width="200" height="256" alt="photo-alex">
+    <img src="../assets/images/alex.png" width="80" height="80" alt="photo-alex">
 
-    <form action="index.php" method="post">
-        <input type="text" name="name" placeholder="Name">
-        <input type="text" name="email" placeholder="Email">
-        <input type="text" name="subject" placeholder="Subject">
-        <textarea name="message" id="" cols="10" rows="5" placeholder="Message"></textarea>
-        <button type="submit">Send</button>
-    </form>
+    <div class="contact_form">
+        <form action="index.php" method="post">
+            <input type="text" name="name" placeholder="Name">
+            <input type="text" name="email" placeholder="Email">
+            <input type="text" name="subject" placeholder="Subject">
+            <textarea name="message" id="" cols="10" rows="5" placeholder="Message"></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <div class="login"><a href="login.php">Login</a></div>
+
     <div class="social">
         <a href="https://www.linkedin.com/in/alexis-tro%C3%AFtzky-245b66211/">
             <img src="../assets/images/Linkedin.png" width="64" height="64" alt="linkedin">
         </a>
-        <a href="https://www.twitter.com/">
+        <a href="https://www.reddit.com/">
             <img src="../assets/images/reddit.png" width="64" height="64" alt="reddit">
         </a>
     </div>
