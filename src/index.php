@@ -1,43 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My BlogPost P5</title>
-</head>
+require_once('C:\laragon\www\p5myblog\src\controllers\comment\add.php');
+require_once('../src/controllers/comment/update.php');
+require_once('../src/controllers/homepage.php');
+require_once('../src/controllers/post.php');
 
-<body>
-    <h1>Alexis Troïtzky</h1>
-    <h2>Je fabrique des programmes et des sites avec mes mains pleines de doigts</h2>
-    <img src="../assets/images/alex.png" width="80" height="80" alt="photo-alex">
+use Application\Controllers\Comment\Add\AddComment;
+use Application\Controllers\Comment\Update\UpdateComment;
+use Application\Controllers\Homepage\Homepage;
+use Application\Controllers\Post\Post;
 
-    <div class="contact_form">
-        <form action="index.php" method="post">
-            <input type="text" name="name" placeholder="Name">
-            <input type="text" name="email" placeholder="Email">
-            <input type="text" name="subject" placeholder="Subject">
-            <textarea name="message" id="" cols="10" rows="5" placeholder="Message"></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </div>
+try {
+    if (isset($_GET['action']) && $_GET['action'] !== '') {
+        if ($_GET['action'] === 'post') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $identifier = $_GET['id'];
 
-    <div class="login"><a href="login.php">Login</a></div>
+                (new Post())->execute($identifier);
+            } else {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        } elseif ($_GET['action'] === 'addComment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $identifier = $_GET['id'];
 
-    <div class="social">
-        <a href="https://www.linkedin.com/in/alexis-tro%C3%AFtzky-245b66211/">
-            <img src="../assets/images/Linkedin.png" width="64" height="64" alt="linkedin">
-        </a>
-        <a href="https://www.reddit.com/">
-            <img src="../assets/images/reddit.png" width="64" height="64" alt="reddit">
-        </a>
-    </div>
-    <footer>
-        <a href="#">Administration</a>
-        <p>&copy; 2022</p>
-    </footer>
+                (new AddComment())->execute($identifier, $_POST);
+            } else {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        } elseif ($_GET['action'] === 'updateComment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $identifier = $_GET['id'];
+                // It sets the input only when the HTTP method is POST (ie. the form is submitted).
+                $input = null;
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    $input = $_POST;
+                }
 
-    <body>
+                (new UpdateComment())->execute($identifier, $input);
+            } else {
+                throw new Exception('Aucun identifiant de commentaire envoyé');
+            }
+        } else {
+            throw new Exception("La page que vous recherchez n'existe pas.");
+        }
+    } else {
+        (new Homepage())->execute();
+    }
+} catch (Exception $e) {
+    $errorMessage = $e->getMessage();
 
-</html>
+    require('../templates/error.php');
+}
