@@ -1,6 +1,6 @@
 <?php
 
-require_once('C:\laragon\www\p5myblog\src\controllers\comment\add.php');
+require_once('../src/controllers/comment/add.php');
 require_once('../src/controllers/comment/update.php');
 require_once('../src/controllers/homepage.php');
 require_once('../src/controllers/post.php');
