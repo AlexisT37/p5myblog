@@ -9,6 +9,7 @@
         <?= htmlspecialchars($post->title) ?>
         <em>le <?= $post->frenchCreationDate ?></em>
     </h3>
+    <h4><?= htmlspecialchars($post->leadParagraph) ?></h4>
 
     <p>
         <?= nl2br(htmlspecialchars($post->content)) ?>
