@@ -4,14 +4,14 @@ h1, h3
 }
 h3
 {
-    background-color:black;
+    background-color:rgb(192, 112, 47);
     color:white;
     font-size:0.9em;
     margin-bottom:0px;
 }
 .news p
 {
-    background-color:#CCCCCC;
+    background-color:#596177;
     margin-top:0px;
 }
 .news
@@ -23,5 +23,5 @@ h3
 a
 {
     text-decoration: none;
-    color: blue;
+    color: rgb(224, 165, 77);
 }

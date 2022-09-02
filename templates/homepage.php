@@ -1,8 +1,8 @@
-<?php $title = "Le blog de l'AVBN"; ?>
+<?php $title = "Alexis Troïtzky"; ?>
 
 <?php ob_start(); ?>
-<h1>Le super blog de l'AVBN !</h1>
-<p>Derniers billets du blog :</p>
+<h1>Alexis Troïtzky</h1>
+<p>Liste des posts :</p>
 
 <?php
 foreach ($posts as $post) {

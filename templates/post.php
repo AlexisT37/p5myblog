@@ -1,7 +1,7 @@
-<?php $title = "Le blog de l'AVBN"; ?>
+<?php $title = "Alexis Troïtzky"; ?>
 
 <?php ob_start(); ?>
-<h1>Le super blog de l'AVBN !</h1>
+<h1>Alexis Troïtzky</h1>
 <p><a href="index.php">Retour à la liste des billets</a></p>
 
 <div class="news">
@@ -18,17 +18,17 @@
 <h2>Commentaires</h2>
 
 <form action="index.php?action=addComment&id=<?= $post->identifier ?>" method="post">
-   <div>
-      <label for="author">Auteur</label><br />
-      <input type="text" id="author" name="author" />
-   </div>
-   <div>
-      <label for="comment">Commentaire</label><br />
-      <textarea id="comment" name="comment"></textarea>
-   </div>
-   <div>
-      <input type="submit" />
-   </div>
+    <div>
+        <label for="author">Auteur</label><br />
+        <input type="text" id="author" name="author" />
+    </div>
+    <div>
+        <label for="comment">Commentaire</label><br />
+        <textarea id="comment" name="comment"></textarea>
+    </div>
+    <div>
+        <input type="submit" />
+    </div>
 </form>
 
 <?php
