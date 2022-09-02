@@ -29,6 +29,9 @@
     <!-- login page -->
     <div class="login"><a href="login.php">Login</a></div>
 
+    <!-- login page -->
+    <div class="register"><a href="register.php">register</a></div>
+
     <!-- social logos -->
     <div class="social">
         <a href="https://www.linkedin.com/in/alexis-tro%C3%AFtzky-245b66211/">
