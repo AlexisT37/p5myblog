@@ -2,10 +2,13 @@
 
 session_start();
 
+const SECRET = 'p9uh020dp03bpo0ugouontu';
+
+
 $host = "localhost"; /* Host name */
 $user = "root"; /* User */
 $password = "root"; /* Password */
-$dbname = "blogpost"; /* Database name */
+$dbname = "oc4"; /* Database name */
 
 $con = mysqli_connect($host, $user, $password, $dbname);
 // Check connection
