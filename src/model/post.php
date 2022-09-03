@@ -56,4 +56,14 @@ class PostRepository
 
         return $posts;
     }
+
+    public function createPost(string $title, string $author, string $leadParagraph, string $content): bool
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            'INSERT INTO posts(title, author, leadParagrahp, content, creation_date) VALUES(?, ?, ?, ?, NOW())'
+        );
+        $affectedLines = $statement->execute([$title, $author, $leadParagraph, $content]);
+
+        return ($affectedLines > 0);
+    }
 }

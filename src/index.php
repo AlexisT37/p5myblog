@@ -1,6 +1,7 @@
 <?php
 
 require_once('../src/controllers/comment/add.php');
+require_once('../src/controllers/post/add.php');
 require_once('../src/controllers/comment/update.php');
 require_once('../src/controllers/homepage.php');
 require_once('../src/controllers/post.php');
@@ -9,6 +10,7 @@ use Application\Controllers\Comment\Add\AddComment;
 use Application\Controllers\Comment\Update\UpdateComment;
 use Application\Controllers\Homepage\Homepage;
 use Application\Controllers\Post\Post;
+use Application\Controllers\Post\Add\AddPost;
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -17,6 +19,14 @@ try {
                 $identifier = $_GET['id'];
 
                 (new Post())->execute($identifier);
+            } else {
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+        } elseif ($_GET['action'] === 'addpost') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $identifier = $_GET['id'];
+
+                (new AddPost())->execute($identifier);
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }

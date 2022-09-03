@@ -31,6 +31,8 @@
 
     <!-- login page -->
     <div class="register"><a href="register.php">register</a></div>
+    <!-- add a post -->
+    <div class="addpost"><a href="addpost.php">Add a post</a></div>
 
     <!-- social logos -->
     <div class="social">
