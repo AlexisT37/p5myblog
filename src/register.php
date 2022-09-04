@@ -16,7 +16,7 @@ if (isset($_POST['register_submit'])) {
     $password = mysqli_real_escape_string($con, $_POST['txt_pwd']);
 
 
-    if ($uname != "" && $password != "") {
+    /*  if ($uname != "" && $password != "") {
 
         $sql_query = "select count(*) as cntUser from user where username='" . $uname . "' and password='" . $password . "'";
         $result = mysqli_query($con, $sql_query);
@@ -37,7 +37,7 @@ if (isset($_POST['register_submit'])) {
             //     }
             // header('Location: register.php');
         }
-    }
+    } */
 }
 ?>
 <html>

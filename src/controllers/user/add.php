@@ -18,7 +18,7 @@ class AddUser
         if (!empty($_POST['txt_email']) && !empty($_POST['txt_uname']) && !empty($_POST['txt_pwd'])) {
             $email = $_POST['txt_email'];
             $username = $_POST['txt_uname'];
-            $password = $_POST['txt_pwd'];
+            $password = password_hash($_POST['txt_pwd'], PASSWORD_BCRYPT);
         } else {
             throw new \Exception('Les données du formulaire sont invalides.');
         }
