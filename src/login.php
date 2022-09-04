@@ -11,50 +11,60 @@ if (isset($_POST['but_submit'])) {
 
     if ($uname != "" && $password != "") {
 
-        $sql_query = "select count(*) as cntUser from user where username='" . $uname . "' and password='" . $password . "'";
+
+        $sql_query = "select count(*) as cntUser from user where username='" . $uname . "'";
         $result = mysqli_query($con, $sql_query);
         $row = mysqli_fetch_array($result);
 
         $count = $row['cntUser'];
 
         if ($count > 0) {
-            $username = $uname;
+            $queryPassword = "select password from user where username='" . $uname . "'";
+            $resultPassword = mysqli_query($con, $queryPassword);
+            $hash = mysqli_fetch_row($resultPassword);
+            $goodpassword = password_verify($password, $hash[0]);
 
-            $queryRoles = "select roles from user where username='" . $username . "'";
-            $resultRoles = mysqli_query($con, $queryRoles);
-            $rowRoles = mysqli_fetch_row($resultRoles);
-
-            $rolesRaw = $rowRoles[0];
-            //todo use jwt instead
-            // $_SESSION['uname'] = $uname;
-            $rolesquote = str_replace("'", "", $rolesRaw);
-            $roles = explode(",", $rolesquote);
+            if ($goodpassword == true) {
 
 
-            //header
-            $header = [
-                'typ' => 'JWT',
-                'alg' => 'HS256',
-            ];
+                $username = $uname;
 
-            //payload made for the user
-            $payload = [
-                'user_id' => $uname,
-                'roles' => $roles
-            ];
+                $queryRoles = "select roles from user where username='" . $username . "'";
+                $resultRoles = mysqli_query($con, $queryRoles);
+                $rowRoles = mysqli_fetch_row($resultRoles);
 
-            //generates a jwt for the user if the login is successful
-            //the jwt will be used for other actions
-            $jwt = new JWT();
-
-            //validity is 60 seconds
-            //new token is 1 hour not one day like the tutorial
-            $token = $jwt->generate($header, $payload, SECRET, 3600);
+                $rolesRaw = $rowRoles[0];
+                //todo use jwt instead
+                // $_SESSION['uname'] = $uname;
+                $rolesquote = str_replace("'", "", $rolesRaw);
+                $roles = explode(",", $rolesquote);
 
 
-            header('Location: home.php');
+                //header
+                $header = [
+                    'typ' => 'JWT',
+                    'alg' => 'HS256',
+                ];
+
+                //payload made for the user
+                $payload = [
+                    'user_id' => $uname,
+                    'roles' => $roles
+                ];
+
+                //generates a jwt for the user if the login is successful
+                //the jwt will be used for other actions
+                $jwt = new JWT();
+
+                //validity is 60 seconds
+                //new token is 1 hour not one day like the tutorial
+                $token = $jwt->generate($header, $payload, SECRET, 3600);
+                header('Location: home.php');
+            } else {
+                echo "Invalid password";
+            }
         } else {
-            echo "Invalid username and password";
+            echo "Invalid username";
         }
     }
 }
