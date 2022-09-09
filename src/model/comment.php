@@ -65,6 +65,15 @@ class CommentRepository
 
     public function createComment(string $post, string $author, string $comment): bool
     {
+
+        //getUser: since the author is a string, we want to get the author's id
+        $statementUser = $this->connection->getConnection()->prepare(
+            "SELECT id FROM user WHERE username = ?"
+        );
+        $statementUser->execute([$author]);
+        $authorStatement = $statementUser->fetch();
+        $author = $authorStatement['id'];
+
         $statement = $this->connection->getConnection()->prepare(
             'INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())'
         );
