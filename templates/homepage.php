@@ -4,6 +4,8 @@
 <h1>Alexis Troïtzky</h1>
 <p>Liste des posts :</p>
 
+
+
 <?php
 foreach ($posts as $post) {
 ?>

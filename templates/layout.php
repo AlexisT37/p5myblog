@@ -12,6 +12,8 @@
     <?= $content ?>
 
 
+
+
     <!-- photo de moi -->
     <img src="../assets/images/alex.png" width="80" height="80" alt="photo-alex">
 
@@ -27,10 +29,43 @@
     </div>
 
     <!-- login page -->
-    <div class="login"><a href="login.php">Login</a></div>
+    <div class="login"><a id="login_button" href="login.php">Login</a></div>
+    <!-- <div class="logout"><a id="logout_button" href="logout.php">Logout</a></div> -->
 
+    <form id="logout_button" action="index.php" method="post">
+        <input type="submit" name="actionLogout" value="LOGOUT" />
+    </form>
+
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['actionLogout'])) {
+        func();
+    }
+    function func()
+    {
+        unset($_COOKIE['TOKEN']);
+    }
+    ?>
+
+
+    <script>
+        var login = "<?php
+                        if (!empty($_COOKIE['TOKEN'])) {
+                            $login = "in";
+                        } else {
+                            $login = "out";
+                        }
+                        echo $login; ?>";
+
+        console.log(login);
+        if (login == 'in') {
+            document.getElementById("login_button").style.visibility = "hidden";
+        }
+        if (login == 'out') {
+            document.getElementById("logout_button").style.visibility = "hidden";
+        }
+    </script>
     <!-- login page -->
-    <div class="register"><a href="register.php">register</a></div>
+    <div class="register"><a href="register.php">Register</a></div>
 
     <!-- social logos -->
     <div class="social">
