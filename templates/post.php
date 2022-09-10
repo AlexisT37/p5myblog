@@ -40,6 +40,7 @@ foreach ($comments as $comment) {
 <?php
 }
 ?>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('layout.php') ?>

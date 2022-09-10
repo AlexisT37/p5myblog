@@ -63,7 +63,7 @@ class CommentRepository
         return $comment;
     }
 
-    public function createComment(int $post, int $author, string $comment): bool
+    public function createComment(int $post, string $author, string $comment): bool
     {
 
         //getUser: since the author is a string, we want to get the author's id
