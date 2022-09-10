@@ -59,7 +59,10 @@ if (isset($_POST['but_submit'])) {
                 //validity is 60 seconds
                 //new token is 1 hour not one day like the tutorial
                 $token = $jwt->generate($header, $payload, SECRET, 3600);
-                header('Location: home.php');
+
+
+                setcookie("TOKEN", $token);
+                header('Location: index.php');
             } else {
                 echo "Invalid password";
             }
