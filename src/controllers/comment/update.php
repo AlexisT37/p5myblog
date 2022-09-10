@@ -10,7 +10,7 @@ use Application\Model\Comment\CommentRepository;
 
 class UpdateComment
 {
-    public function execute(string $identifier, ?array $input)
+    public function execute(int $identifier, ?array $input)
     {
         // It handles the form submission when there is an input.
         if ($input !== null) {

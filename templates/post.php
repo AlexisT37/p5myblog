@@ -35,11 +35,12 @@
 <?php
 foreach ($comments as $comment) {
 ?>
-    <p><strong><?= htmlspecialchars($comment->author) ?></strong> le <?= $comment->frenchCreationDate ?> (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>
+    <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> le <?= $comment->frenchCreationDate ?> (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>
     <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
 <?php
 }
 ?>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('layout.php') ?>
