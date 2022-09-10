@@ -12,14 +12,14 @@ class Post
     public string $frenchCreationDate;
     public string $content;
     public string $leadParagraph;
-    public string $identifier;
+    public int $identifier;
 }
 
 class PostRepository
 {
     public DatabaseConnection $connection;
 
-    public function getPost(string $identifier): Post
+    public function getPost(int $identifier): Post
     {
         $statement = $this->connection->getConnection()->prepare(
             "SELECT id, title, content, leadParagraph, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts WHERE id = ?"

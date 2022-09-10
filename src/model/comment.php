@@ -8,8 +8,8 @@ use Application\Lib\Database\DatabaseConnection;
 
 class Comment
 {
-    public string $identifier;
-    public string $author;
+    public int $identifier;
+    public int $author;
     public string $frenchCreationDate;
     public string $comment;
     public string $post;
@@ -41,7 +41,7 @@ class CommentRepository
         return $comments;
     }
 
-    public function getComment(string $identifier): ?Comment
+    public function getComment(int $identifier): ?Comment
     {
         $statement = $this->connection->getConnection()->prepare(
             "SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id FROM comments WHERE id = ?"
@@ -63,7 +63,7 @@ class CommentRepository
         return $comment;
     }
 
-    public function createComment(string $post, string $author, string $comment): bool
+    public function createComment(int $post, int $author, string $comment): bool
     {
 
         //getUser: since the author is a string, we want to get the author's id
@@ -82,7 +82,7 @@ class CommentRepository
         return ($affectedLines > 0);
     }
 
-    public function updateComment(string $identifier, string $author, string $comment): bool
+    public function updateComment(int $identifier, int $author, string $comment): bool
     {
         $statement = $this->connection->getConnection()->prepare(
             'UPDATE comments SET author = ?, comment = ? WHERE id = ?'

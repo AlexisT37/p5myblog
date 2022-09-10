@@ -29,7 +29,7 @@ class UserRepository
         return ($affectedLines > 0);
     }
 
-    public function getUserName(string $identifier): string
+    public function getUserName(int $identifier): string
     {
         $identifier = (int)$identifier;
         $statement = $this->connection->getConnection()->prepare(

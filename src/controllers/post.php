@@ -14,7 +14,7 @@ use Application\Model\User\UserRepository;
 
 class Post
 {
-    public function execute(string $identifier)
+    public function execute(int $identifier)
     {
         $connection = new DatabaseConnection();
 
