@@ -1,3 +1,31 @@
+<?php
+if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['actionLogout'])) {
+    func();
+}
+function func()
+{
+    unset($_COOKIE['TOKEN']);
+}
+
+if (isset($_GET['logout'])) {
+
+    setcookie("TOKEN", null, 1);
+
+    setcookie($_COOKIE['TOKEN'], '', time() - 3600);
+
+    unset($_COOKIE['TOKEN']);
+
+    session_destroy();
+
+    header('Location: index.php');
+
+    exit;
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,6 +92,15 @@
                     <li class="page-scroll">
                         <a href="#contact">Contact</a>
                     </li>
+                    <li class="page-scroll">
+                        <a id="login_button" href="login.php">Login</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a id="logout_button" href="?logout">logout</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a id="register_button " href="register.php">Register</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -87,6 +124,48 @@
         </div>
     </header>
 
+
+    <!-- section before the footer -->
+    <!-- ██████████████████████████████████████████████████████████████████████████████████████████████████████ -->
+    <!-- REGULAR CONTENT -->
+
+
+
+
+    <!-- login page -->
+    <!-- <div class="login"><a id="login_button" href="login.php">Login</a></div> -->
+    <!-- <div class="logout"><a id="logout_button" href="logout.php">Logout</a></div> -->
+
+    <!-- <form id="logout_button" action="index.php" method="post">
+        <input type="submit" name="actionLogout" value="LOGOUT" />
+    </form> -->
+
+
+
+
+    <script>
+        var login = "<?php
+                        if (!empty($_COOKIE['TOKEN'])) {
+                            $login = "in";
+                        } else {
+                            $login = "out";
+                        }
+                        echo $login; ?>";
+
+        console.log(login);
+        if (login == 'in') {
+            document.getElementById("login_button").style.display = "none";
+        }
+        if (login == 'out') {
+            document.getElementById("logout_button").style.display = "none";
+        }
+    </script>
+    <!-- login page -->
+    <!-- <div class="register"><a href="register.php">Register</a></div> -->
+
+    <!-- ██████████████████████████████████████████████████████████████████████████████████████████████████████ -->
+
+
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
         <div class="container">
@@ -102,6 +181,10 @@
 
         </div>
     </section>
+
+
+
+
 
     <!-- About Section -->
     <section class="success" id="about">
@@ -184,53 +267,7 @@
     </section>
 
 
-    <!-- section before the footer -->
-    <!-- ██████████████████████████████████████████████████████████████████████████████████████████████████████ -->
-    <!-- REGULAR CONTENT -->
 
-
-
-
-    <!-- login page -->
-    <div class="login"><a id="login_button" href="login.php">Login</a></div>
-    <!-- <div class="logout"><a id="logout_button" href="logout.php">Logout</a></div> -->
-
-    <form id="logout_button" action="index.php" method="post">
-        <input type="submit" name="actionLogout" value="LOGOUT" />
-    </form>
-
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['actionLogout'])) {
-        func();
-    }
-    function func()
-    {
-        unset($_COOKIE['TOKEN']);
-    }
-    ?>
-
-
-    <script>
-        var login = "<?php
-                        if (!empty($_COOKIE['TOKEN'])) {
-                            $login = "in";
-                        } else {
-                            $login = "out";
-                        }
-                        echo $login; ?>";
-
-        console.log(login);
-        if (login == 'in') {
-            document.getElementById("login_button").style.visibility = "hidden";
-        }
-        if (login == 'out') {
-            document.getElementById("logout_button").style.visibility = "hidden";
-        }
-    </script>
-    <!-- login page -->
-    <div class="register"><a href="register.php">Register</a></div>
-
-    <!-- ██████████████████████████████████████████████████████████████████████████████████████████████████████ -->
 
     <!-- Footer -->
     <footer class="text-center">
