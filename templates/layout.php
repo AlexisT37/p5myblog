@@ -125,24 +125,6 @@ if (isset($_GET['logout'])) {
     </header>
 
 
-    <!-- section before the footer -->
-    <!-- ██████████████████████████████████████████████████████████████████████████████████████████████████████ -->
-    <!-- REGULAR CONTENT -->
-
-
-
-
-    <!-- login page -->
-    <!-- <div class="login"><a id="login_button" href="login.php">Login</a></div> -->
-    <!-- <div class="logout"><a id="logout_button" href="logout.php">Logout</a></div> -->
-
-    <!-- <form id="logout_button" action="index.php" method="post">
-        <input type="submit" name="actionLogout" value="LOGOUT" />
-    </form> -->
-
-
-
-
     <script>
         var login = "<?php
                         if (!empty($_COOKIE['TOKEN'])) {
@@ -160,11 +142,6 @@ if (isset($_GET['logout'])) {
             document.getElementById("logout_button").style.display = "none";
         }
     </script>
-    <!-- login page -->
-    <!-- <div class="register"><a href="register.php">Register</a></div> -->
-
-    <!-- ██████████████████████████████████████████████████████████████████████████████████████████████████████ -->
-
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -191,20 +168,20 @@ if (isset($_GET['logout'])) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>About</h2>
+                    <h2>À propos de moi</h2>
                     <hr class="star-light">
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>Freelancer is a free bootstrap theme created by Start Bootstrap. The download includes the complete source files including HTML, CSS, and JavaScript as well as optional LESS stylesheets for easy customization.</p>
+                    <p>Je suis actuellement en alternance full remote chez Myddleware dans le cadre de ma formation développeur PHP Symfony chez Open Classrooms.</p>
                 </div>
                 <div class="col-lg-4">
-                    <p>Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</p>
+                    <p>Myddleware est une entreprise qui se spécialise dans les CRM et la migration de données. Mon équipe est formidable et mon travail passionant !</p>
                 </div>
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="#" class="btn btn-lg btn-outline">
-                        <i class="fa fa-download"></i> Download Theme
+                    <a href="../assets/files/alexiscv.pdf" class="btn btn-lg btn-outline">
+                        <i class="fa fa-download"></i> Mon CV
                     </a>
                 </div>
             </div>
