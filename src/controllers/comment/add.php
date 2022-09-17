@@ -14,8 +14,7 @@ class AddComment
     {
         $author = null;
         $comment = null;
-        if (!empty($input['author']) && !empty($input['comment'])) {
-            $author = $input['author'];
+        if (!empty($input['comment'])) {
             $comment = $input['comment'];
         } else {
             throw new \Exception('Les données du formulaire sont invalides.');
