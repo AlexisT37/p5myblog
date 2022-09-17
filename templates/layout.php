@@ -134,7 +134,6 @@ if (isset($_GET['logout'])) {
                         }
                         echo $login; ?>";
 
-        console.log(login);
         if (login == 'in') {
             document.getElementById("login_button").style.display = "none";
         }

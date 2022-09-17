@@ -20,10 +20,6 @@
 
 <form action="index.php?action=addComment&id=<?= $post->identifier ?>" method="post">
     <div>
-        <label for="author">Auteur</label><br />
-        <input type="text" id="author" name="author" />
-    </div>
-    <div>
         <label for="comment">Commentaire</label><br />
         <textarea id="comment" name="comment"></textarea>
     </div>
@@ -34,10 +30,12 @@
 
 <?php
 foreach ($comments as $comment) {
+    if ($comment->validated == 1) {
 ?>
-    <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> le <?= $comment->frenchCreationDate ?> (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>
-    <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
+        <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> le <?= $comment->frenchCreationDate ?> (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>
+        <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
 <?php
+    }
 }
 ?>
 

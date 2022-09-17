@@ -42,7 +42,8 @@ class JWT
         //genereate token that will be matched against this
         //time 0 because already have iat and exp
         $verifToken = $this->generate($header, $payload, $secret, 0);
-        return $token === $verifToken;
+        $validToken = ($token === $verifToken);
+        return $validToken;
     }
 
     public function getHeader(string $token)
