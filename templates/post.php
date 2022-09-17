@@ -33,7 +33,7 @@ foreach ($comments as $comment) {
 ?>
         <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> le <?= $comment->frenchCreationDate ?>
 
-            <?php if ($comment->author == $loggedUserId) {
+            <?php if (!empty($loggedUserId) && $comment->author == $loggedUserId) {
 
             ?>
                 (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>

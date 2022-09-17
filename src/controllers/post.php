@@ -27,10 +27,16 @@ class Post
         $commentRepository->connection = $connection;
         $comments = $commentRepository->getComments($identifier);
 
-        $tokenFromLogin = $_COOKIE['TOKEN'];
-        $tokenProcessing = new JWT();
-        $loggedPayload = $tokenProcessing->getPayload($tokenFromLogin);
-        $loggedUserId = $loggedPayload['userId'];
+        // Use the token if the user is logged in
+
+        if (!empty($_COOKIE['TOKEN'])) {
+
+            $tokenFromLogin = $_COOKIE['TOKEN'];
+            $tokenProcessing = new JWT();
+            $loggedPayload = $tokenProcessing->getPayload($tokenFromLogin);
+            $loggedUserId = $loggedPayload['userId'];
+        }
+
 
 
         $users = [];
