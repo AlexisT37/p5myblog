@@ -30,7 +30,7 @@ class Post
         foreach ($comments as $comment) {
             $commentUserRepository = new UserRepository;
             $commentUserRepository->connection = $connection;
-            $user = $commentUserRepository->getUserName($comment->author);
+            $user = $commentUserRepository->getUserNameFromId($comment->author);
             $userIdChar = $comment->identifier;
             $userId = (int)$userIdChar;
             $users[$userId] = $user;

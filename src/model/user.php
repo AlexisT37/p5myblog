@@ -29,7 +29,7 @@ class UserRepository
         return ($affectedLines > 0);
     }
 
-    public function getUserName(int $identifier): string
+    public function getUserNameFromId(int $identifier): string
     {
         $identifier = (int)$identifier;
         $statement = $this->connection->getConnection()->prepare(
@@ -41,5 +41,20 @@ class UserRepository
         $user = $row['username'];
 
         return $user;
+    }
+
+    public function getUserIdFromName(string $name): int
+    {
+        $connection = new DatabaseConnection();
+
+        $statement = $connection->getConnection()->prepare(
+            "SELECT id FROM user WHERE username = ?"
+        );
+        $statement->execute([$name]);
+
+        $row = $statement->fetch();
+        $id = $row['id'];
+
+        return $id;
     }
 }

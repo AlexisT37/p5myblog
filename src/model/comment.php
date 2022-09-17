@@ -8,6 +8,7 @@ require_once('C:/laragon/www/p5myblog/src/config.php');
 
 use JWT;
 use Application\Lib\Database\DatabaseConnection;
+use Application\Model\User\UserRepository;
 
 class Comment
 {
@@ -98,13 +99,25 @@ class CommentRepository
         }
     }
 
-    public function updateComment(int $identifier, int $author, string $comment): bool
+    public function updateComment(int $identifier, string $comment): bool
     {
-        $statement = $this->connection->getConnection()->prepare(
-            'UPDATE comments SET author = ?, comment = ? WHERE id = ?'
-        );
-        $affectedLines = $statement->execute([$author, $comment, $identifier]);
+        $tokenFromCookies = $_COOKIE['TOKEN'];
+        $tokenVerifProcess = new JWT();
+        $validToken = $tokenVerifProcess->check($tokenFromCookies, SECRET);
+        if ($validToken === true) {
+            $decodedTokenInfo = $tokenVerifProcess->getPayload($tokenFromCookies);
+            $authorUsername = $decodedTokenInfo['user_id'];
+            $authorFetchId = new UserRepository();
+            $author = $authorFetchId->getUserIdFromName($authorUsername);
 
-        return ($affectedLines > 0);
+            $statement = $this->connection->getConnection()->prepare(
+                'UPDATE comments SET author = ?, comment = ? WHERE id = ?'
+            );
+            $affectedLines = $statement->execute([$author, $comment, $identifier]);
+
+            return ($affectedLines > 0);
+        } else {
+            throw new \Exception('Token invalide.');
+        }
     }
 }
