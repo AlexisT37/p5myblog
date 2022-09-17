@@ -22,7 +22,6 @@ class PostRepository
 
     public function createPost(string $title,  string $content, string $leadParagraph, $UserId): bool
     {
-        $UserId = 1;
         $statement = $this->connection->getConnection()->prepare(
             'INSERT INTO posts(title, content, leadParagraph, User_Id, creation_date) VALUES(?, ?, ?, ?, NOW())'
         );
@@ -70,5 +69,15 @@ class PostRepository
         }
 
         return $posts;
+    }
+
+    public function validatePost($id): bool
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            'UPDATE posts SET validated = 1 WHERE id = ?'
+        );
+        $affectedLines = $statement->execute([$id]);
+
+        return ($affectedLines > 0);
     }
 }

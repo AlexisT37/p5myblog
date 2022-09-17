@@ -15,6 +15,7 @@ $posts = $postRepository->getPosts();
 
 
 
+
 <?php
 foreach ($posts as $post) {
     if ($post->validated == 0) {
@@ -24,7 +25,8 @@ foreach ($posts as $post) {
             <h3>
                 <?= htmlspecialchars($post->title); ?>
                 <em>le <?= $post->frenchCreationDate; ?></em>
-                <em><a href="index.php?action=post&id=<?= urlencode($post->validatePost()) ?>">Valider le post</a></em>
+
+                (<a href="administrationindex.php?action=ValidatePost&id=<?= $post->identifier ?>">Valider le post</a>)</p>
             </h3>
             <h4><?= htmlspecialchars($post->leadParagraph) ?></h4>
             <p>

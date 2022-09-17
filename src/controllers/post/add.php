@@ -7,6 +7,7 @@ require_once('C:/laragon/www/p5myblog/src/model/post.php');
 
 use Application\Lib\Database\DatabaseConnection;
 use Application\Model\Post\PostRepository;
+use JWT;
 
 class AddPost
 {
@@ -25,12 +26,25 @@ class AddPost
 
         $userRepository = new PostRepository();
         $userRepository->connection = new DatabaseConnection();
-        $UserId = 1;
-        $success = $userRepository->createPost($title, $content, $leadParagraph, $UserId);
-        if (!$success) {
-            throw new \Exception('Impossible d\'ajouter le post !');
+
+        // Use the token if the user is logged in
+
+        if (!empty($_COOKIE['TOKEN'])) {
+
+            $tokenFromLogin = $_COOKIE['TOKEN'];
+            $tokenProcessing = new JWT();
+            $loggedPayload = $tokenProcessing->getPayload($tokenFromLogin);
+            $loggedUserId = $loggedPayload['userId'];
+
+
+            $success = $userRepository->createPost($title, $content, $leadParagraph, $loggedUserId);
+            if (!$success) {
+                throw new \Exception('Impossible d\'ajouter le post !');
+            } else {
+                header('Location: index.php');
+            }
         } else {
-            header('Location: index.php');
+            throw new \Exception('Utilisateur non autentifié');
         }
     }
 }
