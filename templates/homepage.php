@@ -15,12 +15,12 @@ foreach ($posts as $post) {
             <h3>
                 <?= htmlspecialchars($post->title); ?>
                 <em>le <?= $post->frenchCreationDate; ?></em>
+                <em><a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">Détail du post</a></em>
             </h3>
             <h4><?= htmlspecialchars($post->leadParagraph) ?></h4>
             <p>
                 <?= nl2br(htmlspecialchars($post->content)); ?>
                 <br />
-                <em><a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">Commentaires</a></em>
             </p>
         </div>
 <?php

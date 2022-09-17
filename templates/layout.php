@@ -74,7 +74,7 @@ if (isset($_GET['logout'])) {
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="#page-top">Alexis Troïtzky</a>
+                <a class="navbar-brand" href="index.php#page-top">Alexis Troïtzky</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -84,10 +84,10 @@ if (isset($_GET['logout'])) {
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Liste des Posts</a>
+                        <a href="index.php#portfolio">Liste des Posts</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">About</a>
+                        <a href="#about">À propos</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#contact">Contact</a>
