@@ -47,6 +47,7 @@ try {
             if (1 == 1) {
                 $identifier = 3;
                 // It sets the input only when the HTTP method is POST (ie. the form is submitted).
+                //todo change this section
                 $input = null;
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $input = $_POST;

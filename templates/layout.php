@@ -104,6 +104,9 @@ if (isset($_GET['logout'])) {
                     <li class="page-scroll">
                         <a id="register_button " href="register.php">Register</a>
                     </li>
+                    <li class="page-scroll">
+                        <a id="admin " href="./administration.php">Administration</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
