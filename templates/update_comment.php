@@ -1,7 +1,6 @@
 <?php $title = "Alexis Troïtzky"; ?>
 
 <?php ob_start(); ?>
-<h1>Alexis Troïtzky</h1>
 <p><a href="index.php?action=post&id=<?= $comment->post ?>">Retour au billet</a></p>
 
 <h2>Modification du commentaire</h2>

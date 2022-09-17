@@ -1,7 +1,6 @@
 <?php $title = "Alexis Troïtzky"; ?>
 
 <?php ob_start(); ?>
-<h1>Alexis Troïtzky</h1>
 <p><a href="index.php">Retour à la liste des billets</a></p>
 
 <div class="news">
@@ -34,7 +33,7 @@ foreach ($comments as $comment) {
 ?>
         <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> le <?= $comment->frenchCreationDate ?>
 
-            <?php if ($comment->author == 7) {
+            <?php if ($comment->author == $loggedUserId) {
 
             ?>
                 (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>

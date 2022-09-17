@@ -79,7 +79,7 @@ class CommentRepository
         $validToken = $tokenVerifProcess->check($tokenFromCookies, SECRET);
         if ($validToken === true) {
             $decodedTokenInfo = $tokenVerifProcess->getPayload($tokenFromCookies);
-            $author = $decodedTokenInfo['user_id'];
+            $author = $decodedTokenInfo['username'];
             //getUser: since the author is a string, we want to get the author's id
             $statementUser = $this->connection->getConnection()->prepare(
                 "SELECT id FROM user WHERE username = ?"
@@ -106,7 +106,7 @@ class CommentRepository
         $validToken = $tokenVerifProcess->check($tokenFromCookies, SECRET);
         if ($validToken === true) {
             $decodedTokenInfo = $tokenVerifProcess->getPayload($tokenFromCookies);
-            $authorUsername = $decodedTokenInfo['user_id'];
+            $authorUsername = $decodedTokenInfo['username'];
             $authorFetchId = new UserRepository();
             $author = $authorFetchId->getUserIdFromName($authorUsername);
 
