@@ -197,6 +197,11 @@ section.success {
     padding-top: 75px;
   }
 }
+
+#create-post {
+  background-color: #941e8e;
+}
+
 #portfolio .portfolio-item {
   margin: 0 0 15px;
   right: 0;

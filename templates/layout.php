@@ -87,6 +87,9 @@ if (isset($_GET['logout'])) {
                         <a href="index.php#portfolio">Liste des Posts</a>
                     </li>
                     <li class="page-scroll">
+                        <a href="#create-post">Créer un post</a>
+                    </li>
+                    <li class="page-scroll">
                         <a href="#about">À propos</a>
                     </li>
                     <li class="page-scroll">
@@ -159,7 +162,40 @@ if (isset($_GET['logout'])) {
     </section>
 
 
+    <!-- Create Post Section -->
+    <section class="success" id="create-post">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Créer un post</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
 
+                <div class="col-lg-12 text-center">
+                    <form action="index.php?action=addPost" method="post">
+                        <div>
+                            <label for="title">Titre</label><br />
+                            <input class="form-control" type="text" id="title" name="title" />
+                        </div>
+                        <div>
+                            <label for="content">Contenu</label><br />
+                            <textarea class="form-control" id="content" name="content"></textarea>
+                        </div>
+                        <div>
+                            <label for="leadParagraph">Chapô</label><br />
+                            <textarea class="form-control" id="leadParagraph" name="leadParagraph"></textarea>
+                        </div>
+                        <div>
+                            <input class="btn btn-lg btn-outline" type="submit" id="submitPost" value="Soumettre Post" />
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
 
 
     <!-- About Section -->
