@@ -32,8 +32,14 @@
 foreach ($comments as $comment) {
     if ($comment->validated == 1) {
 ?>
-        <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> le <?= $comment->frenchCreationDate ?> (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>
-        <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
+        <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> le <?= $comment->frenchCreationDate ?>
+
+            <?php if ($comment->author == 7) {
+
+            ?>
+                (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>
+    <?php } ?>
+    <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
 <?php
     }
 }
