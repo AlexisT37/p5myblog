@@ -23,18 +23,19 @@ if (isset($_GET['logout'])) {
 }
 
 use JWT;
-                        if (!empty($_COOKIE['TOKEN'])) {
-                            $myToken = $_COOKIE['TOKEN'];
-                            $adminJWTCheck = new JWT();
-                            $adminInJWT = $adminJWTCheck->isAdmin($myToken);
-                            if ($adminInJWT === true) {
-                                $admin = 1;
-                            } else {
-                                $admin = 0;
-                            }
-                        } else {
-                            $admin = 0;
-                        }
+
+if (!empty($_COOKIE['TOKEN'])) {
+    $myToken = $_COOKIE['TOKEN'];
+    $adminJWTCheck = new JWT();
+    $adminInJWT = $adminJWTCheck->isAdmin($myToken);
+    if ($adminInJWT === true) {
+        $admin = 1;
+    } else {
+        $admin = 0;
+    }
+} else {
+    $admin = 0;
+}
 // $admin = 1;
 
 ?>
@@ -99,10 +100,10 @@ use JWT;
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="index.php#portfolio">Liste des Posts</a>
+                        <a href="#portfolio">Liste des Posts</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#create-post">Créer un post</a>
+                        <a id="createPostButton" href="#create-post-section">Créer un post</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#about">À propos</a>
@@ -117,7 +118,7 @@ use JWT;
                         <a id="logout_button" href="?logout">logout</a>
                     </li>
                     <li class="page-scroll">
-                        <a id="register_button " href="register.php">Register</a>
+                        <a id="register_button" href="register.php">Register</a>
                     </li>
                 </ul>
             </div>
@@ -153,24 +154,33 @@ use JWT;
                         }
                         echo $login; ?>";
         console.log(login);
-        if (login == 'in') {
+        if (login == 'in' && document.getElementById("login_button") != null) {
             document.getElementById("login_button").style.display = "none";
+            document.getElementById("register_button").style.display = "none";
+            
+            console.log('after login');
         }
-        if (login == 'out') {
+        console.log("depart");
+        var logoutButtonFind = document.getElementById("logout_button");
+        console.log("logout find");
+        console.log(logoutButtonFind);
+
+        if (login == 'out' && document.getElementById("logout_button")) {
             document.getElementById("logout_button").style.display = "none";
-            document.getElementById("admin_button").style.display = "none";
+            // document.getElementById("create-post").style.display = "none";
+            // document.getElementById("create-post-section").style.display = "none";
         }
+
+        console.log("after logout");
+        console.log("before  admin");
+        // if (login == 'out' && document.getElementById("logout_button")) {
+        //     document.getElementById("admin_button").style.display = "none";
+        // }
+        console.log("after admin");
+        console.log("fin");
     </script>
 
 
-<script>
-        var admin = "<?php echo $admin;?>";
-        // console.log("this is admin");
-        // console.log(admin);
-        if (admin != 1) {
-            document.getElementById("admin_button").style.display = "none";
-        }
-    </script>
 
 
     <!-- Portfolio Grid Section -->
@@ -191,7 +201,7 @@ use JWT;
 
 
     <!-- Create Post Section -->
-    <section class="success" id="create-post">
+    <section class="success" id="create-post-section">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -225,6 +235,27 @@ use JWT;
         </div>
     </section>
 
+    <script>
+        console.log("before create post")
+        createPostFind = document.getElementById("createPostButton");
+        console.log(createPostFind);
+        if (login == 'out' && createPostFind != null) {
+            console.log("after create post check")
+            document.getElementById("createPostButton").style.display = "none";
+        }
+        console.log("after create post hide")
+    </script>
+
+<script>
+        console.log("before create post section")
+        createPostSectionFind = document.getElementById("create-post-section");
+        console.log(createPostSectionFind);
+        if (login == 'out' && createPostSectionFind != null) {
+            console.log("after create post section check")
+            document.getElementById("create-post-section").style.display = "none";
+        }
+        console.log("after create post section hide")
+    </script>
 
     <!-- About Section -->
     <section class="success" id="about">
@@ -338,13 +369,13 @@ use JWT;
                         <h3>About Freelancer</h3>
                         <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
                     </div> -->
-                    
-                        <div class="footer-col col-md-4" >
-                            <a id="admin_button" href="./administration.php">
-                                <h3>Administration</h3>
-                            </a>
-                        </div>
-                    
+
+                    <div class="footer-col col-md-4">
+                        <a id="admin_button" href="./administration.php">
+                            <h3>Administration</h3>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -358,6 +389,22 @@ use JWT;
             </div>
         </div>
     </footer>
+
+    <script>
+        var adminButtonFind = document.getElementById("admin_button");
+        console.log("admin find");
+        console.log(adminButtonFind);
+
+
+
+        var admin = "<?php echo $admin; ?>";
+        // console.log("this is admin");
+        // console.log(admin);
+        if (admin != 1 && adminButtonFind != null) {
+            document.getElementById("admin_button").style.display = "none";
+        }
+    </script>
+
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
