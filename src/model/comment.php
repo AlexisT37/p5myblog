@@ -9,6 +9,7 @@ require_once('C:/laragon/www/p5myblog/src/config.php');
 use JWT;
 use Application\Lib\Database\DatabaseConnection;
 use Application\Model\User\UserRepository;
+use DateTime;
 
 class Comment
 {
@@ -142,9 +143,10 @@ class CommentRepository
             $authorUsername = $decodedTokenInfo['username'];
             $authorFetchId = new UserRepository();
             $author = $authorFetchId->getUserIdFromName($authorUsername);
+            // $modifiedDate = new DateTime();
 
             $statement = $this->connection->getConnection()->prepare(
-                'UPDATE comments SET author = ?, comment = ? WHERE id = ?'
+                'UPDATE comments SET author = ?, comment = ?, modified_date = NOW() WHERE id = ?'
             );
             $affectedLines = $statement->execute([$author, $comment, $identifier]);
 
