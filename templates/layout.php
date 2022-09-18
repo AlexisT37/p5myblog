@@ -22,6 +22,21 @@ if (isset($_GET['logout'])) {
     exit;
 }
 
+use JWT;
+                        if (!empty($_COOKIE['TOKEN'])) {
+                            $myToken = $_COOKIE['TOKEN'];
+                            $adminJWTCheck = new JWT();
+                            $adminInJWT = $adminJWTCheck->isAdmin($myToken);
+                            if ($adminInJWT === true) {
+                                $admin = 1;
+                            } else {
+                                $admin = 0;
+                            }
+                        } else {
+                            $admin = 0;
+                        }
+// $admin = 1;
+
 ?>
 
 
@@ -104,9 +119,6 @@ if (isset($_GET['logout'])) {
                     <li class="page-scroll">
                         <a id="register_button " href="register.php">Register</a>
                     </li>
-                    <li class="page-scroll">
-                        <a id="admin_button" href="./administration.php">Administration</a>
-                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -132,6 +144,7 @@ if (isset($_GET['logout'])) {
 
 
     <script>
+        console.log("before login 1");
         var login = "<?php
                         if (!empty($_COOKIE['TOKEN'])) {
                             $login = "in";
@@ -139,7 +152,7 @@ if (isset($_GET['logout'])) {
                             $login = "out";
                         }
                         echo $login; ?>";
-
+        console.log(login);
         if (login == 'in') {
             document.getElementById("login_button").style.display = "none";
         }
@@ -148,6 +161,17 @@ if (isset($_GET['logout'])) {
             document.getElementById("admin_button").style.display = "none";
         }
     </script>
+
+
+<script>
+        var admin = "<?php echo $admin;?>";
+        // console.log("this is admin");
+        // console.log(admin);
+        if (admin != 1) {
+            document.getElementById("admin_button").style.display = "none";
+        }
+    </script>
+
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -314,6 +338,13 @@ if (isset($_GET['logout'])) {
                         <h3>About Freelancer</h3>
                         <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
                     </div> -->
+                    
+                        <div class="footer-col col-md-4" >
+                            <a id="admin_button" href="./administration.php">
+                                <h3>Administration</h3>
+                            </a>
+                        </div>
+                    
                 </div>
             </div>
         </div>
