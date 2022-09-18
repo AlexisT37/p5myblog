@@ -42,8 +42,6 @@ if (isset($_POST['but_submit'])) {
                 $rowRoles = mysqli_fetch_row($resultRoles);
 
                 $rolesRaw = $rowRoles[0];
-                //todo use jwt instead
-                // $_SESSION['uname'] = $uname;
                 $rolesquote = str_replace("'", "", $rolesRaw);
                 $roles = explode(",", $rolesquote);
 
