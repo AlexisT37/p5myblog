@@ -9,7 +9,6 @@ require_once('C:/laragon/www/p5myblog/src/config.php');
 use JWT;
 use Application\Lib\Database\DatabaseConnection;
 use Application\Model\User\UserRepository;
-use DateTime;
 
 class Comment
 {

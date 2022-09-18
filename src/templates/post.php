@@ -8,6 +8,11 @@
         <?= htmlspecialchars($post->title) ?>
         <em>le <?= $post->frenchCreationDate ?></em>
     </h3>
+    <?php if (!empty($loggedUserId) && $post->userId == $loggedUserId) {
+
+?>
+    (<a href="index.php?action=updatePost&id=<?= $post->identifier ?>">modifier le post</a>)</p>
+<?php } ?>
     <h4><?= htmlspecialchars($post->leadParagraph) ?></h4>
 
     <p>
@@ -36,7 +41,7 @@ foreach ($comments as $comment) {
             <?php if (!empty($loggedUserId) && $comment->author == $loggedUserId) {
 
             ?>
-                (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>
+                (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier le commentaire</a>)</p>
     <?php } ?>
     <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
 <?php

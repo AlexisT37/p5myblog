@@ -5,12 +5,14 @@ require_once('../src/controllers/comment/update.php');
 require_once('../src/controllers/homepage.php');
 require_once('../src/controllers/post.php');
 require_once('../src/controllers/post/add.php');
+require_once('../src/controllers/post/update.php');
 
 use Application\Controllers\Comment\Add\AddComment;
 use Application\Controllers\Comment\Update\UpdateComment;
 use Application\Controllers\Homepage\Homepage;
 use Application\Controllers\Post\Post;
 use Application\Controllers\Post\Add\AddPost;
+use Application\Controllers\Post\Update\UpdatePost;
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -50,7 +52,14 @@ try {
                     $input = $_POST;
                 }
                 (new addPost())->execute($identifier, $input);
-        } else {
+        } elseif ($_GET['action'] === 'updatePost') {
+            $identifier = $_GET['id'];
+            $input = null;
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $input = $_POST;
+            }
+            (new UpdatePost())->execute($identifier, $input);
+    } else {
             throw new Exception("La page que vous recherchez n'existe pas.");
         }
     } else {
