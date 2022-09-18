@@ -24,6 +24,39 @@ class CommentRepository
 {
     public DatabaseConnection $connection;
 
+    public function validateComment($identifier): bool
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            'UPDATE comments SET validated = 1 WHERE id = ?'
+        );
+        $affectedLines = $statement->execute([$identifier]);
+
+        return ($affectedLines > 0);
+    }
+
+    public function getUnvalidatedComments(): array
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            "SELECT id, author, comment, validated, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id FROM comments WHERE validated = 0 ORDER BY comment_date DESC"
+        );
+        $statement->execute([]);
+
+        $comments = [];
+        while (($row = $statement->fetch())) {
+            $comment = new Comment();
+            $comment->identifier = $row['id'];
+            $comment->author = $row['author'];
+            $comment->frenchCreationDate = $row['french_creation_date'];
+            $comment->comment = $row['comment'];
+            $comment->post = $row['post_id'];
+            $comment->validated = $row['validated'];
+
+            $comments[] = $comment;
+        }
+
+        return $comments;
+    }
+
     public function getComments(string $post): array
     {
         $statement = $this->connection->getConnection()->prepare(
