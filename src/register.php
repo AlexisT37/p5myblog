@@ -11,4 +11,4 @@ if (isset($_POST['register_submit'])) {
     $uname = mysqli_real_escape_string($con, $_POST['txt_uname']);
     $password = mysqli_real_escape_string($con, $_POST['txt_pwd']);
 }
-include('../templates/register.php');
+include('./templates/register.php');

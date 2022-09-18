@@ -40,5 +40,5 @@ foreach ($posts as $post) {
 ?>
 
 <?php $contentAdmin = ob_get_clean();
-require('../templates/administration.php');
+require('./templates/administration.php');
 ?>

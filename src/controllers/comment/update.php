@@ -41,6 +41,6 @@ class UpdateComment
             throw new \Exception("Le commentaire $identifier n'existe pas.");
         }
 
-        require('../templates/update_comment.php');
+        require('./templates/update_comment.php');
     }
 }

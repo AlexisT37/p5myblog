@@ -80,4 +80,4 @@ if (isset($_POST['but_submit'])) {
     }
 }
 
-include('../templates/login.php');
+include('./templates/login.php');

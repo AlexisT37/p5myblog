@@ -48,6 +48,6 @@ class Post
             $userId = (int)$userIdChar;
             $users[$userId] = $user;
         }
-        require('../templates/post.php');
+        require('./templates/post.php');
     }
 }

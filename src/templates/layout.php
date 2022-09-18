@@ -273,7 +273,7 @@ if (!empty($_COOKIE['TOKEN'])) {
                     <p>Myddleware est une entreprise qui se spécialise dans les CRM et la migration de données. Mon équipe est formidable et mon travail passionant !</p>
                 </div>
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="../assets/files/alexiscv.pdf" class="btn btn-lg btn-outline">
+                    <a href="./assets/files/alexiscv.pdf" class="btn btn-lg btn-outline">
                         <i class="fa fa-download"></i> Mon CV
                     </a>
                 </div>
