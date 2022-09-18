@@ -39,7 +39,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Liste des posts</h2>
+                    <h2>Liste des posts non validés</h2>
                     <hr class="star-primary">
                 </div>
             </div>

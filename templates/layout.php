@@ -105,7 +105,7 @@ if (isset($_GET['logout'])) {
                         <a id="register_button " href="register.php">Register</a>
                     </li>
                     <li class="page-scroll">
-                        <a id="admin " href="./administration.php">Administration</a>
+                        <a id="admin_button" href="./administration.php">Administration</a>
                     </li>
                 </ul>
             </div>
@@ -145,6 +145,7 @@ if (isset($_GET['logout'])) {
         }
         if (login == 'out') {
             document.getElementById("logout_button").style.display = "none";
+            document.getElementById("admin_button").style.display = "none";
         }
     </script>
 
@@ -183,12 +184,12 @@ if (isset($_GET['logout'])) {
                             <input class="form-control" type="text" id="title" name="title" />
                         </div>
                         <div>
-                            <label for="content">Contenu</label><br />
-                            <textarea class="form-control" id="content" name="content"></textarea>
-                        </div>
-                        <div>
                             <label for="leadParagraph">Chapô</label><br />
                             <textarea class="form-control" id="leadParagraph" name="leadParagraph"></textarea>
+                        </div>
+                        <div>
+                            <label for="content">Contenu</label><br />
+                            <textarea class="form-control" id="content" name="content"></textarea>
                         </div>
                         <div>
                             <input class="btn btn-lg btn-outline" type="submit" id="submitPost" value="Soumettre Post" />
