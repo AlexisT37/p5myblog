@@ -16,6 +16,7 @@ class Comment
     public int $identifier;
     public int $author;
     public string $frenchCreationDate;
+    public string $frenchModifiedDate;
     public string $comment;
     public string $post;
     public int $validated = 0;
@@ -38,7 +39,7 @@ class CommentRepository
     public function getUnvalidatedComments(): array
     {
         $statement = $this->connection->getConnection()->prepare(
-            "SELECT id, author, comment, validated, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id FROM comments WHERE validated = 0 ORDER BY comment_date DESC"
+            "SELECT id, author, comment, validated, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id, DATE_FORMAT(modified_date, '%d/%m/%Y à %Hh%imin%ss') AS french_modified_date FROM comments WHERE validated = 0 ORDER BY comment_date DESC"
         );
         $statement->execute([]);
 
@@ -48,6 +49,7 @@ class CommentRepository
             $comment->identifier = $row['id'];
             $comment->author = $row['author'];
             $comment->frenchCreationDate = $row['french_creation_date'];
+            $comment->frenchModifiedDate = $row['french_modified_date'];
             $comment->comment = $row['comment'];
             $comment->post = $row['post_id'];
             $comment->validated = $row['validated'];
@@ -61,7 +63,7 @@ class CommentRepository
     public function getComments(string $post): array
     {
         $statement = $this->connection->getConnection()->prepare(
-            "SELECT id, author, comment, validated, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id FROM comments WHERE post_id = ? ORDER BY comment_date DESC"
+            "SELECT id, author, comment, validated, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id, DATE_FORMAT(modified_date, '%d/%m/%Y à %Hh%imin%ss') AS french_modified_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC"
         );
         $statement->execute([$post]);
 
@@ -71,6 +73,7 @@ class CommentRepository
             $comment->identifier = $row['id'];
             $comment->author = $row['author'];
             $comment->frenchCreationDate = $row['french_creation_date'];
+            $comment->frenchModifiedDate = $row['french_modified_date'];
             $comment->comment = $row['comment'];
             $comment->post = $row['post_id'];
             $comment->validated = $row['validated'];

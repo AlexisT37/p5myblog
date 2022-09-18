@@ -31,7 +31,7 @@
 foreach ($comments as $comment) {
     if ($comment->validated == 1) {
 ?>
-        <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> le <?= $comment->frenchCreationDate ?>
+        <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> le <?= $comment->frenchModifiedDate ?>
 
             <?php if (!empty($loggedUserId) && $comment->author == $loggedUserId) {
 
