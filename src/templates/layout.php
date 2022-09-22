@@ -127,7 +127,7 @@ if (!empty($_COOKIE['TOKEN'])) {
                 </ul>
             </div>
             <div>
-                <h4 class="skills currentUser" >Bonjour, <?php echo $currentUser?></h4>
+                <h4 class="skills currentUser" ><?php if (isset($currentUser)) {echo "Bonjour, ".$currentUser;}?></h4>
             </div>
             <!-- /.navbar-collapse -->
         </div>
