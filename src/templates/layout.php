@@ -22,7 +22,7 @@ if (isset($_GET['logout'])) {
     exit;
 }
 
-
+// Set admin flag
 if (!empty($_COOKIE['TOKEN'])) {
     $myToken = $_COOKIE['TOKEN'];
     $adminJWTCheck = new JWT();
@@ -35,8 +35,13 @@ if (!empty($_COOKIE['TOKEN'])) {
 } else {
     $admin = 0;
 }
-// $admin = 1;
 
+
+// Set User flag
+if (!empty($_COOKIE['TOKEN'])) {
+    $currentUserPayload = $adminJWTCheck->getPayload($myToken);
+    $currentUser = $currentUserPayload['username'];
+}
 ?>
 
 
@@ -120,6 +125,9 @@ if (!empty($_COOKIE['TOKEN'])) {
                         <a id="register_button" href="register.php">Register</a>
                     </li>
                 </ul>
+            </div>
+            <div>
+                <h4 class="skills currentUser" ><?php if (isset($currentUser)) {echo "Bonjour, ".$currentUser;}?></h4>
             </div>
             <!-- /.navbar-collapse -->
         </div>
