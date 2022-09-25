@@ -125,7 +125,7 @@ class CommentRepository
             $author = $authorStatement['id'];
 
             $statement = $this->connection->getConnection()->prepare(
-                'INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())'
+                'INSERT INTO comments(post_id, author, comment, comment_date, modified_date) VALUES(?, ?, ?, NOW(), NOW())'
             );
             $affectedLines = $statement->execute([$post, $author, $comment]);
 
