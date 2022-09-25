@@ -11,6 +11,7 @@ require_once('C:/laragon/www/p5myblog/src/config.php');
 
 use Application\Lib\Database\DatabaseConnection;
 use Application\Model\User\UserRepository;
+use DateTime;
 use JWT;
 
 class Post
@@ -22,6 +23,8 @@ class Post
     public string $leadParagraph;
     public int $identifier;
     public int $validated = 0;
+    public DateTime $creationDate;
+    public Datetime $modifiedDate;
 }
 
 class PostRepository
@@ -31,7 +34,7 @@ class PostRepository
     public function createPost(string $title,  string $content, string $leadParagraph, $UserId): bool
     {
         $statement = $this->connection->getConnection()->prepare(
-            'INSERT INTO posts(title, content, leadParagraph, User_Id, creation_date) VALUES(?, ?, ?, ?, NOW())'
+            'INSERT INTO posts(title, content, leadParagraph, User_Id, creation_date, modified_date) VALUES(?, ?, ?, ?, NOW(), NOW())'
         );
         $affectedLines = $statement->execute([$title, $content, $leadParagraph, $UserId]);
 
