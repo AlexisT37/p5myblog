@@ -42,7 +42,8 @@ class JWT
         //genereate token that will be matched against this
         //time 0 because already have iat and exp
         $verifToken = $this->generate($header, $payload, $secret, 0);
-        return $token === $verifToken;
+        $validToken = ($token === $verifToken);
+        return $validToken;
     }
 
     public function getHeader(string $token)
@@ -74,5 +75,14 @@ class JWT
     {
         //the regular expression checks for specifc characters, the dots are present in the jwt, the + separates for the regex
         return preg_match('/^[a-zA-Z0-9\-\_\=]+.[a-zA-Z0-9\-\_\=]+.[a-zA-Z0-9\-\_\=]+$/', $token) === 1;
+    }
+
+    public function isAdmin(string $token): bool
+    {
+        $adminJWTCheckPayload = $this->getPayload($token);
+        $adminJWTRoles = $adminJWTCheckPayload['roles'];
+        $adminJWTSlot = $adminJWTRoles[0];
+        $adminInJWT = !(strpos($adminJWTSlot, 'ROLE_ADMIN') === false);
+        return ($adminInJWT === true);
     }
 }

@@ -29,13 +29,19 @@ if (isset($_POST['but_submit'])) {
 
                 $username = $uname;
 
+
+                $queryId = "select id from user where username='" . $username . "'";
+                $resultId = mysqli_query($con, $queryId);
+                $userIdString = mysqli_fetch_row($resultId)[0];
+                $userId = (int)$userIdString;
+
+
+
                 $queryRoles = "select roles from user where username='" . $username . "'";
                 $resultRoles = mysqli_query($con, $queryRoles);
                 $rowRoles = mysqli_fetch_row($resultRoles);
 
                 $rolesRaw = $rowRoles[0];
-                //todo use jwt instead
-                // $_SESSION['uname'] = $uname;
                 $rolesquote = str_replace("'", "", $rolesRaw);
                 $roles = explode(",", $rolesquote);
 
@@ -48,7 +54,9 @@ if (isset($_POST['but_submit'])) {
 
                 //payload made for the user
                 $payload = [
-                    'user_id' => $uname,
+                    'userId' => $userId,
+                    // 'user_id' => $uname,
+                    'username' => $uname,
                     'roles' => $roles
                 ];
 
@@ -72,4 +80,4 @@ if (isset($_POST['but_submit'])) {
     }
 }
 
-include('../templates/login.php');
+include('./templates/login.php');

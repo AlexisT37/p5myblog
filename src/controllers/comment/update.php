@@ -14,10 +14,8 @@ class UpdateComment
     {
         // It handles the form submission when there is an input.
         if ($input !== null) {
-            $author = null;
             $comment = null;
-            if (!empty($input['author']) && !empty($input['comment'])) {
-                $author = $input['author'];
+            if (!empty($input['comment'])) {
                 $comment = $input['comment'];
             } else {
                 throw new \Exception('Les données du formulaire sont invalides.');
@@ -25,11 +23,13 @@ class UpdateComment
 
             $commentRepository = new CommentRepository();
             $commentRepository->connection = new DatabaseConnection();
-            $success = $commentRepository->updateComment($identifier, $author, $comment);
+            $success = $commentRepository->updateComment($identifier, $comment);
             if (!$success) {
                 throw new \Exception('Impossible de modifier le commentaire !');
             } else {
-                header('Location: index.php?action=updateComment&id=' . $identifier);
+                $comment = $commentRepository->getComment($identifier);
+
+                header('Location: index.php?action=post&id=' . $comment->post);
             }
         }
 
@@ -41,6 +41,6 @@ class UpdateComment
             throw new \Exception("Le commentaire $identifier n'existe pas.");
         }
 
-        require('../templates/update_comment.php');
+        require('./templates/update_comment.php');
     }
 }

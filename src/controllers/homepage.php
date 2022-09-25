@@ -16,6 +16,6 @@ class Homepage
         $postRepository->connection = new DatabaseConnection();
         $posts = $postRepository->getPosts();
 
-        require('../templates/homepage.php');
+        require('./templates/homepage.php');
     }
 }

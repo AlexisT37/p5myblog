@@ -44,18 +44,12 @@ try {
                 throw new Exception('Aucun identifiant de commentaire envoyé');
             }
         } elseif ($_GET['action'] === 'addPost') {
-            if (1 == 1) {
-                $identifier = 3;
-                // It sets the input only when the HTTP method is POST (ie. the form is submitted).
+            
                 $input = null;
                 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $input = $_POST;
                 }
-
                 (new addPost())->execute($identifier, $input);
-            } else {
-                throw new Exception('Pas d\'utilisateur');
-            }
         } else {
             throw new Exception("La page que vous recherchez n'existe pas.");
         }
@@ -65,5 +59,5 @@ try {
 } catch (Exception $e) {
     $errorMessage = $e->getMessage();
 
-    require('../templates/error.php');
+    require('./templates/error.php');
 }

@@ -11,6 +11,7 @@ use Application\Lib\Database\DatabaseConnection;
 use Application\Model\Comment\CommentRepository;
 use Application\Model\Post\PostRepository;
 use Application\Model\User\UserRepository;
+use JWT;
 
 class Post
 {
@@ -26,15 +27,27 @@ class Post
         $commentRepository->connection = $connection;
         $comments = $commentRepository->getComments($identifier);
 
+        // Use the token if the user is logged in
+
+        if (!empty($_COOKIE['TOKEN'])) {
+
+            $tokenFromLogin = $_COOKIE['TOKEN'];
+            $tokenProcessing = new JWT();
+            $loggedPayload = $tokenProcessing->getPayload($tokenFromLogin);
+            $loggedUserId = $loggedPayload['userId'];
+        }
+
+
+
         $users = [];
         foreach ($comments as $comment) {
             $commentUserRepository = new UserRepository;
             $commentUserRepository->connection = $connection;
-            $user = $commentUserRepository->getUserName($comment->author);
+            $user = $commentUserRepository->getUserNameFromId($comment->author);
             $userIdChar = $comment->identifier;
             $userId = (int)$userIdChar;
             $users[$userId] = $user;
         }
-        require('../templates/post.php');
+        require('./templates/post.php');
     }
 }

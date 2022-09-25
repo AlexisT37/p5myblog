@@ -1,7 +1,6 @@
 <?php $title = "Alexis Troïtzky"; ?>
 
 <?php ob_start(); ?>
-<h1>Alexis Troïtzky</h1>
 <p><a href="index.php">Retour à la liste des billets</a></p>
 
 <div class="news">
@@ -20,10 +19,6 @@
 
 <form action="index.php?action=addComment&id=<?= $post->identifier ?>" method="post">
     <div>
-        <label for="author">Auteur</label><br />
-        <input type="text" id="author" name="author" />
-    </div>
-    <div>
         <label for="comment">Commentaire</label><br />
         <textarea id="comment" name="comment"></textarea>
     </div>
@@ -34,10 +29,18 @@
 
 <?php
 foreach ($comments as $comment) {
+    if ($comment->validated == 1) {
 ?>
-    <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> le <?= $comment->frenchCreationDate ?> (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>
+        <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> le <?= $comment->frenchCreationDate ?>
+
+            <?php if (!empty($loggedUserId) && $comment->author == $loggedUserId) {
+
+            ?>
+                (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier</a>)</p>
+    <?php } ?>
     <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
 <?php
+    }
 }
 ?>
 

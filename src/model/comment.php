@@ -3,8 +3,12 @@
 namespace Application\Model\Comment;
 
 require_once('C:/laragon/www/p5myblog/src/lib/database.php');
+require_once('C:/laragon/www/p5myblog/src/classes/JWT.php');
+require_once('C:/laragon/www/p5myblog/src/config.php');
 
+use JWT;
 use Application\Lib\Database\DatabaseConnection;
+use Application\Model\User\UserRepository;
 
 class Comment
 {
@@ -13,6 +17,7 @@ class Comment
     public string $frenchCreationDate;
     public string $comment;
     public string $post;
+    public int $validated = 0;
 }
 
 class CommentRepository
@@ -22,7 +27,7 @@ class CommentRepository
     public function getComments(string $post): array
     {
         $statement = $this->connection->getConnection()->prepare(
-            "SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id FROM comments WHERE post_id = ? ORDER BY comment_date DESC"
+            "SELECT id, author, comment, validated, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id FROM comments WHERE post_id = ? ORDER BY comment_date DESC"
         );
         $statement->execute([$post]);
 
@@ -34,6 +39,7 @@ class CommentRepository
             $comment->frenchCreationDate = $row['french_creation_date'];
             $comment->comment = $row['comment'];
             $comment->post = $row['post_id'];
+            $comment->validated = $row['validated'];
 
             $comments[] = $comment;
         }
@@ -44,7 +50,7 @@ class CommentRepository
     public function getComment(int $identifier): ?Comment
     {
         $statement = $this->connection->getConnection()->prepare(
-            "SELECT id, author, comment, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id FROM comments WHERE id = ?"
+            "SELECT id, author, comment, validated, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id FROM comments WHERE id = ?"
         );
         $statement->execute([$identifier]);
 
@@ -59,36 +65,59 @@ class CommentRepository
         $comment->frenchCreationDate = $row['french_creation_date'];
         $comment->comment = $row['comment'];
         $comment->post = $row['post_id'];
+        $comment->validated = $row['validated'];
+
 
         return $comment;
     }
 
-    public function createComment(int $post, string $author, string $comment): bool
+    public function createComment(int $post, string $author = null, string $comment): bool
     {
 
-        //getUser: since the author is a string, we want to get the author's id
-        $statementUser = $this->connection->getConnection()->prepare(
-            "SELECT id FROM user WHERE username = ?"
-        );
-        $statementUser->execute([$author]);
-        $authorStatement = $statementUser->fetch();
-        $author = $authorStatement['id'];
+        $tokenFromCookies = $_COOKIE['TOKEN'];
+        $tokenVerifProcess = new JWT();
+        $validToken = $tokenVerifProcess->check($tokenFromCookies, SECRET);
+        if ($validToken === true) {
+            $decodedTokenInfo = $tokenVerifProcess->getPayload($tokenFromCookies);
+            $author = $decodedTokenInfo['username'];
+            //getUser: since the author is a string, we want to get the author's id
+            $statementUser = $this->connection->getConnection()->prepare(
+                "SELECT id FROM user WHERE username = ?"
+            );
+            $statementUser->execute([$author]);
+            $authorStatement = $statementUser->fetch();
+            $author = $authorStatement['id'];
 
-        $statement = $this->connection->getConnection()->prepare(
-            'INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())'
-        );
-        $affectedLines = $statement->execute([$post, $author, $comment]);
+            $statement = $this->connection->getConnection()->prepare(
+                'INSERT INTO comments(post_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())'
+            );
+            $affectedLines = $statement->execute([$post, $author, $comment]);
 
-        return ($affectedLines > 0);
+            return ($affectedLines > 0);
+        } else {
+            header('Location: index.php');
+        }
     }
 
-    public function updateComment(int $identifier, int $author, string $comment): bool
+    public function updateComment(int $identifier, string $comment): bool
     {
-        $statement = $this->connection->getConnection()->prepare(
-            'UPDATE comments SET author = ?, comment = ? WHERE id = ?'
-        );
-        $affectedLines = $statement->execute([$author, $comment, $identifier]);
+        $tokenFromCookies = $_COOKIE['TOKEN'];
+        $tokenVerifProcess = new JWT();
+        $validToken = $tokenVerifProcess->check($tokenFromCookies, SECRET);
+        if ($validToken === true) {
+            $decodedTokenInfo = $tokenVerifProcess->getPayload($tokenFromCookies);
+            $authorUsername = $decodedTokenInfo['username'];
+            $authorFetchId = new UserRepository();
+            $author = $authorFetchId->getUserIdFromName($authorUsername);
 
-        return ($affectedLines > 0);
+            $statement = $this->connection->getConnection()->prepare(
+                'UPDATE comments SET author = ?, comment = ? WHERE id = ?'
+            );
+            $affectedLines = $statement->execute([$author, $comment, $identifier]);
+
+            return ($affectedLines > 0);
+        } else {
+            throw new \Exception('Token invalide.');
+        }
     }
 }
