@@ -38,7 +38,7 @@ class CommentRepository
     public function getUnvalidatedComments(): array
     {
         $statement = $this->connection->getConnection()->prepare(
-            "SELECT id, author, comment, validated, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id, DATE_FORMAT(modified_date, '%d/%m/%Y à %Hh%imin%ss') AS french_modified_date FROM comments WHERE validated = 0 ORDER BY comment_date DESC"
+            "SELECT id, author, comment, validated, DATE_FORMAT(comment_date, 'créé le %d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id, DATE_FORMAT(modified_date, '%d/%m/%Y à %Hh%imin%ss') AS french_modified_date FROM comments WHERE validated = 0 ORDER BY comment_date DESC"
         );
         $statement->execute([]);
 

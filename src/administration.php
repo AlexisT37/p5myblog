@@ -54,7 +54,7 @@ foreach ($posts as $post) {
 foreach ($unvalidatedComments as $unvalidatedComment) {
     
 ?>
-        <p><strong><?= htmlspecialchars($unvalidatedComment->identifier) ?></strong> le <?= $unvalidatedComment->frenchCreationDate ?>
+        <p><strong><?= htmlspecialchars($unvalidatedComment->identifier) ?></strong> <?= $unvalidatedComment->frenchCreationDate ?>
 
             <?php if (1 == 1) {
 
