@@ -12,24 +12,37 @@ class AddUser
 {
     public function execute()
     {
-        $email = null;
-        $username = null;
-        $password = null;
-        if (!empty($_POST['txt_email']) && !empty($_POST['txt_uname']) && !empty($_POST['txt_pwd'])) {
-            $email = $_POST['txt_email'];
-            $username = $_POST['txt_uname'];
-            $password = password_hash($_POST['txt_pwd'], PASSWORD_BCRYPT);
-        } else {
-            throw new \Exception('Les données du formulaire sont invalides.');
-        }
+        try {
+            $email = null;
+            $username = null;
+            $password = null;
+            if (!empty($_POST['txt_email']) && !empty($_POST['txt_uname']) && !empty($_POST['txt_pwd']) && !empty($_POST['txt_password_verify'])) {
+                $email = $_POST['txt_email'];
+                $username = $_POST['txt_uname'];
+                $passwordTest1 = $_POST['txt_pwd'];
+                $passwordTest2 = $_POST['txt_password_verify'];
+                $passwordMatch = ($passwordTest1 === $passwordTest2);
+                // Verify if the two passwords match
+                if ($passwordMatch == true) {
+                    $password = password_hash($_POST['txt_pwd'], PASSWORD_BCRYPT);
+                } else {
+                    throw new \Exception('Les mots de passe ne correspondent pas.');
+                }
+            } else {
+                throw new \Exception('Les données du formulaire sont invalides.');
+            }
 
-        $userRepository = new UserRepository();
-        $userRepository->connection = new DatabaseConnection();
-        $success = $userRepository->createUser($email, $username, $password);
-        if (!$success) {
-            throw new \Exception('Impossible d\'ajouter l\'utilisateur !');
-        } else {
-            header('Location: index.php');
+            $userRepository = new UserRepository();
+            $userRepository->connection = new DatabaseConnection();
+            $success = $userRepository->createUser($email, $username, $password);
+            if (!$success) {
+                throw new \Exception('Impossible d\'ajouter l\'utilisateur !');
+            } else {
+                header('Location: index.php');
+            }
+        } catch (\Exception $e) {
+            $errorMessage = $e->getMessage();
+            echo "<script type='text/javascript'>alert('$errorMessage');</script>";
         }
     }
 }

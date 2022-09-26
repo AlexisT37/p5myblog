@@ -44,7 +44,10 @@
                     <input type="text" class="textbox" id="txt_uname" name="txt_uname" placeholder="Username" />
                 </div>
                 <div>
-                    <input type="password" class="textbox" id="txt_uname" name="txt_pwd" placeholder="Password" />
+                    <input type="password" class="textbox" id="txt_password" name="txt_pwd" placeholder="Password" />
+                </div>
+                <div>
+                    <input type="password" class="textbox" id="txt_password_verify" name="txt_password_verify" placeholder="Password" />
                 </div>
                 <div>
                     <input class="btn btn-success btn-lg" type="submit" value="Submit" name="register_submit" id="register_submit" />
