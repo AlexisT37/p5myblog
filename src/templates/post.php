@@ -37,14 +37,17 @@
 
 <?php
 foreach ($comments as $comment) {
-    if ($comment->validated == 1) {
+    if ($comment->validated == 1 && $comment->deleted == 0) {
 ?>
         <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> le <?= $comment->frenchModifiedDate ?>
 
             <?php if (!empty($loggedUserId) && $comment->author == $loggedUserId) {
 
             ?>
+            <br>
                 (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier le commentaire</a>)</p>
+                <br>
+                (<a id="deleteCommentButton" href="index.php?action=deleteComment&id=<?= $comment->identifier ?>">Supprimer le commentaire</a>)</p>
     <?php } ?>
     <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
 <?php
