@@ -19,6 +19,7 @@ class Comment
     public string $comment;
     public string $post;
     public int $validated = 0;
+    public int $deleted;
 }
 
 class CommentRepository
@@ -62,7 +63,7 @@ class CommentRepository
     public function getComments(string $post): array
     {
         $statement = $this->connection->getConnection()->prepare(
-            "SELECT id, author, comment, validated, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id, DATE_FORMAT(modified_date, '%d/%m/%Y à %Hh%imin%ss') AS french_modified_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC"
+            "SELECT id, author, comment, validated, deleted, DATE_FORMAT(comment_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date, post_id, DATE_FORMAT(modified_date, '%d/%m/%Y à %Hh%imin%ss') AS french_modified_date FROM comments WHERE post_id = ? ORDER BY comment_date DESC"
         );
         $statement->execute([$post]);
 
@@ -76,11 +77,23 @@ class CommentRepository
             $comment->comment = $row['comment'];
             $comment->post = $row['post_id'];
             $comment->validated = $row['validated'];
+            $comment->deleted = $row['deleted'];
+
 
             $comments[] = $comment;
         }
 
         return $comments;
+    }
+
+    public function deleteComment($id): bool
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            'UPDATE comments SET deleted = 1 WHERE id = ?'
+        );
+        $affectedLines = $statement->execute([$id]);
+
+        return ($affectedLines > 0);
     }
 
     public function getComment(int $identifier): ?Comment
