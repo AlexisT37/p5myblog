@@ -93,6 +93,16 @@ class PostRepository
         return ($affectedLines > 0);
     }
 
+    public function deletePost($id): bool
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            'UPDATE posts SET deleted = 1 WHERE id = ?'
+        );
+        $affectedLines = $statement->execute([$id]);
+
+        return ($affectedLines > 0);
+    }
+
     public function updatePost(int $identifier, string $content, string $leadParagraph, string $title): bool
     {
         $tokenFromCookies = $_COOKIE['TOKEN'];
