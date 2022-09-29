@@ -25,6 +25,7 @@ class Post
     public int $validated = 0;
     public DateTime $creationDate;
     public Datetime $modifiedDate;
+    public int $deleted;
 }
 
 class PostRepository
@@ -64,7 +65,7 @@ class PostRepository
     public function getPosts(): array
     {
         $statement = $this->connection->getConnection()->query(
-            "SELECT id, title, content, leadParagraph, validated, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY modified_date DESC LIMIT 0, 5"
+            "SELECT id, title, content, leadParagraph, validated, deleted, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss') AS french_creation_date FROM posts ORDER BY modified_date DESC LIMIT 0, 5"
         );
         $posts = [];
         while (($row = $statement->fetch())) {
@@ -75,6 +76,7 @@ class PostRepository
             $post->content = $row['content'];
             $post->identifier = $row['id'];
             $post->validated = $row['validated'];
+            $post->deleted = $row['deleted'];
 
 
             $posts[] = $post;
