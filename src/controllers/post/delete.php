@@ -1,6 +1,6 @@
 <?php
 
-namespace Application\Controllers\Post\Validate;
+namespace Application\Controllers\Post\Delete;
 
 require_once('C:/laragon/www/p5myblog/src/classes/JWT.php');
 require_once('C:/laragon/www/p5myblog/src/lib/database.php');
@@ -10,7 +10,7 @@ use Application\Lib\Database\DatabaseConnection;
 use Application\Model\Post\PostRepository;
 use JWT;
 
-class ValidatePost
+class DeletePost
 {
     public function execute(int $identifier)
     {
@@ -24,9 +24,9 @@ class ValidatePost
             $loggedPayload = $tokenProcessing->getPayload($tokenFromLogin);
             $loggedUserId = $loggedPayload['userId'];
 
-            $success = $postRepository->validatePost($identifier);
+            $success = $postRepository->deletePost($identifier);
             if (!$success) {
-                throw new \Exception('Impossible de valider le post !');
+                throw new \Exception('Impossible de supprimer le post !');
             } else {
                 header('Location: index.php');
             }

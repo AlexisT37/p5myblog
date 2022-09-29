@@ -7,7 +7,7 @@
 
 <?php
 foreach ($posts as $post) {
-    if ($post->validated == 1) {
+    if ($post->validated == 1 && $post->deleted == 0) {
 
 ?>
         <div class="news">

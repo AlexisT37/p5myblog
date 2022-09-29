@@ -11,7 +11,10 @@
     <?php if (!empty($loggedUserId) && $post->userId == $loggedUserId) {
 
 ?>
-    (<a href="index.php?action=updatePost&id=<?= $post->identifier ?>">modifier le post</a>)</p>
+    (<a href="index.php?action=updatePost&id=<?= $post->identifier ?>">Modifier le post</a>)</p>
+    <br>
+    (<a id="deletePostButton" href="index.php?action=deletePost&id=<?= $post->identifier ?>">Supprimer le post</a>)</p>
+
 <?php } ?>
     <h4><?= htmlspecialchars($post->leadParagraph) ?></h4>
 
