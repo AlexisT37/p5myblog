@@ -32,9 +32,9 @@
 </head>
 
 <body class="index">
-    <div class="container navbar-header page-scroll">
+    <div class="container col-lg-12 text-center" id="container_login">
         <form method="post" action="">
-            <div id="div_login">
+            <div id="div_login" class="col-lg-12 text-center">
                 <h1>Login</h1>
                 <div>
                     <input type="text" class="textbox" id="txt_uname" name="txt_uname" placeholder="Username" />

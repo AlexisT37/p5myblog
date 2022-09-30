@@ -32,7 +32,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container col-lg-12 text-center" id="container_register">
         <form action="register.php?action=addUser" method="post">
             <!-- <form method="post" action=""> -->
             <div id="div_login">
