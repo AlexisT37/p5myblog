@@ -3,23 +3,29 @@
 <?php ob_start(); ?>
 
 <div class="news">
+
     <h3>
-        <?= htmlspecialchars($post->title) ?>
+        <em>Par <?= $postUsername ?></em>
+    </h3>
+    <br>
+    <h3>
         <em>le <?= $post->frenchCreationDate ?></em>
     </h3>
-    <?php if (!empty($loggedUserId) && $post->userId == $loggedUserId) {
 
-?>
-    (<a href="index.php?action=updatePost&id=<?= $post->identifier ?>">Modifier le post</a>)</p>
-    <br>
-    (<a id="deletePostButton" href="index.php?action=deletePost&id=<?= $post->identifier ?>">Supprimer le post</a>)</p>
-
-<?php } ?>
     <h4><?= htmlspecialchars($post->leadParagraph) ?></h4>
 
     <p>
         <?= nl2br(htmlspecialchars($post->content)) ?>
     </p>
+
+    <?php if (!empty($loggedUserId) && $post->userId == $loggedUserId) {
+
+    ?>
+        (<a href="index.php?action=updatePost&id=<?= $post->identifier ?>">Modifier le post</a>)</p>
+        <br>
+        (<a id="deletePostButton" href="index.php?action=deletePost&id=<?= $post->identifier ?>">Supprimer le post</a>)</p>
+
+    <?php } ?>
 </div>
 
 <h2>Commentaires</h2>
@@ -39,15 +45,15 @@ foreach ($comments as $comment) {
     if ($comment->validated == 1 && $comment->deleted == 0) {
 ?>
         <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> dernière modifiaction le <?= $comment->frenchModifiedDate ?>
+        <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
 
             <?php if (!empty($loggedUserId) && $comment->author == $loggedUserId) {
 
             ?>
-            <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
-            <br>
-                (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier le commentaire</a>)</p>
-                <br>
-                (<a id="deleteCommentButton" href="index.php?action=deleteComment&id=<?= $comment->identifier ?>">Supprimer le commentaire</a>)</p>
+        <br>
+        (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier le commentaire</a>)</p>
+        <br>
+        (<a id="deleteCommentButton" href="index.php?action=deleteComment&id=<?= $comment->identifier ?>">Supprimer le commentaire</a>)</p>
     <?php } ?>
 <?php
     }

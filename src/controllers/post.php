@@ -23,6 +23,12 @@ class Post
         $postRepository->connection = $connection;
         $post = $postRepository->getPost($identifier);
 
+        //Get the post author username
+        $usernameConnection = new DatabaseConnection();
+        $postUserRepository =  new UserRepository();
+        $postUserRepository->connection = $usernameConnection;
+        $postUsername = $postUserRepository->getUserNameFromId($post->userId);
+
         $commentRepository = new CommentRepository();
         $commentRepository->connection = $connection;
         $comments = $commentRepository->getComments($identifier);
