@@ -179,7 +179,7 @@ if (!empty($_COOKIE['TOKEN'])) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Liste des posts</h2>
+                    <h2 id="list_of_posts">Liste des posts</h2>
                     <hr class="star-primary">
                 </div>
             </div>
@@ -189,6 +189,13 @@ if (!empty($_COOKIE['TOKEN'])) {
 
         </div>
     </section>
+
+    <script>
+        console.log("hello section");
+        const listOfPosts = document.getElementById('list_of_posts');
+        console.log(listOfPosts)
+
+    </script>
 
 
     <!-- Create Post Section -->
@@ -227,25 +234,17 @@ if (!empty($_COOKIE['TOKEN'])) {
     </section>
 
     <script>
-        console.log("before create post")
         createPostFind = document.getElementById("createPostButton");
-        console.log(createPostFind);
         if (login == 'out' && createPostFind != null) {
-            console.log("after create post check")
             document.getElementById("createPostButton").style.display = "none";
         }
-        console.log("after create post hide")
     </script>
 
     <script>
-        console.log("before create post section")
         createPostSectionFind = document.getElementById("create-post-section");
-        console.log(createPostSectionFind);
         if (login == 'out' && createPostSectionFind != null) {
-            console.log("after create post section check")
             document.getElementById("create-post-section").style.display = "none";
         }
-        console.log("after create post section hide")
     </script>
 
     <!-- About Section -->
@@ -383,14 +382,7 @@ if (!empty($_COOKIE['TOKEN'])) {
 
     <script>
         var adminButtonFind = document.getElementById("admin_button");
-        console.log("admin find");
-        console.log(adminButtonFind);
-
-
-
         var admin = "<?php echo $admin; ?>";
-        // console.log("this is admin");
-        // console.log(admin);
         if (admin != 1 && adminButtonFind != null) {
             document.getElementById("admin_button").style.display = "none";
         }
