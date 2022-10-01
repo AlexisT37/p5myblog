@@ -1,7 +1,6 @@
 <?php $title = "Alexis Troïtzky"; ?>
 
 <?php ob_start(); ?>
-<p>Liste des posts :</p>
 
 
 

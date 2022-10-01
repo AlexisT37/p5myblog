@@ -1,40 +1,45 @@
 <?php $title = "Alexis Troïtzky"; ?>
 
 <?php ob_start(); ?>
-<p><a id="back_to_posts_list_button" href="index.php">Retour à la liste des posts</a></p>
 
 
-    <!-- Portfolio Grid Section -->
-    <section id="post_title">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 id="list_of_posts"> <?php echo $post->title;?></h2>
-                    <hr class="star-primary">
-                </div>
+<!-- Portfolio Grid Section -->
+<section id="post_title">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 id="list_of_posts"> <?php echo $post->title; ?></h2>
+                <hr class="star-primary">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 
 <div class="news">
+
     <h3>
-        <?= htmlspecialchars($post->title) ?>
+        <em>Par <?= $postUsername ?></em>
+    </h3>
+    <br>
+    <h3>
         <em>le <?= $post->frenchCreationDate ?></em>
     </h3>
-    <?php if (!empty($loggedUserId) && $post->userId == $loggedUserId) {
 
-?>
-    (<a href="index.php?action=updatePost&id=<?= $post->identifier ?>">Modifier le post</a>)</p>
-    <br>
-    (<a id="deletePostButton" href="index.php?action=deletePost&id=<?= $post->identifier ?>">Supprimer le post</a>)</p>
-
-<?php } ?>
     <h4><?= htmlspecialchars($post->leadParagraph) ?></h4>
 
     <p>
         <?= nl2br(htmlspecialchars($post->content)) ?>
     </p>
+
+    <?php if (!empty($loggedUserId) && $post->userId == $loggedUserId) {
+
+    ?>
+        (<a href="index.php?action=updatePost&id=<?= $post->identifier ?>">Modifier le post</a>)</p>
+        <br>
+        (<a id="deletePostButton" href="index.php?action=deletePost&id=<?= $post->identifier ?>">Supprimer le post</a>)</p>
+
+    <?php } ?>
 </div>
 
 <h2>Commentaires</h2>
@@ -58,11 +63,11 @@ foreach ($comments as $comment) {
             <?php if (!empty($loggedUserId) && $comment->author == $loggedUserId) {
 
             ?>
-            <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
-            <br>
-                (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier le commentaire</a>)</p>
-                <br>
-                (<a id="deleteCommentButton" href="index.php?action=deleteComment&id=<?= $comment->identifier ?>">Supprimer le commentaire</a>)</p>
+        <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
+        <br>
+        (<a href="index.php?action=updateComment&id=<?= $comment->identifier ?>">modifier le commentaire</a>)</p>
+        <br>
+        (<a id="deleteCommentButton" href="index.php?action=deleteComment&id=<?= $comment->identifier ?>">Supprimer le commentaire</a>)</p>
     <?php } ?>
 <?php
     }

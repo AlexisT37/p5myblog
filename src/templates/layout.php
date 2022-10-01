@@ -197,7 +197,6 @@ if (!empty($_COOKIE['TOKEN'])) {
                         echo $singlePost; ?>";
         if (singlePost == 'yes' && document.getElementById("list_of_posts") != null) {
             document.getElementById("list_of_posts").style.display = "none";
-            document.getElementById("back_to_posts_list_button").style.display = "none";
         }
     </script>
 
