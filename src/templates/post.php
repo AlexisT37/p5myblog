@@ -1,7 +1,21 @@
 <?php $title = "Alexis Troïtzky"; ?>
 
 <?php ob_start(); ?>
-<p><a href="index.php">Retour à la liste des posts</a></p>
+<p><a id="back_to_posts_list_button" href="index.php">Retour à la liste des posts</a></p>
+
+
+    <!-- Portfolio Grid Section -->
+    <section id="post_title">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 id="list_of_posts"> <?php echo $post->title;?></h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+        </div>
+    </section>
+
 
 <div class="news">
     <h3>

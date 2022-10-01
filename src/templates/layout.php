@@ -171,15 +171,12 @@ if (!empty($_COOKIE['TOKEN'])) {
         }
     </script>
 
-
-
-
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 id="list_of_posts">Liste des posts</h2>
+                <div id="list_of_posts" class="col-lg-12 text-center">
+                    <h2>Liste des posts</h2>
                     <hr class="star-primary">
                 </div>
             </div>
@@ -191,10 +188,17 @@ if (!empty($_COOKIE['TOKEN'])) {
     </section>
 
     <script>
-        console.log("hello section");
-        const listOfPosts = document.getElementById('list_of_posts');
-        console.log(listOfPosts)
-
+        var singlePost = "<?php
+                        if ($_GET['action'] === 'post') {
+                            $singlePost = "yes";
+                        } else {
+                            $singlePost = "no";
+                        }
+                        echo $singlePost; ?>";
+        if (singlePost == 'yes' && document.getElementById("list_of_posts") != null) {
+            document.getElementById("list_of_posts").style.display = "none";
+            document.getElementById("back_to_posts_list_button").style.display = "none";
+        }
     </script>
 
 
