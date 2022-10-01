@@ -12,6 +12,9 @@ foreach ($posts as $post) {
         <div class="news">
             <h3>
                 <?= htmlspecialchars($post->title); ?>
+                <h3>
+                    <em>Par <?= $users[$post->userId] ?></em>
+                </h3>
                 <em>le <?= $post->frenchCreationDate; ?></em>
                 <em><a href="index.php?action=post&id=<?= urlencode($post->identifier) ?>">Détail du post</a></em>
             </h3>

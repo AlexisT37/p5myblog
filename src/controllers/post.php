@@ -44,7 +44,7 @@ class Post
         }
 
 
-
+        // Get the comment usernames
         $users = [];
         foreach ($comments as $comment) {
             $commentUserRepository = new UserRepository;
