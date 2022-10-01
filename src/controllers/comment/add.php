@@ -26,7 +26,7 @@ class AddComment
         if (!$success) {
             throw new \Exception('Impossible d\'ajouter le commentaire !');
         } else {
-            header('Location: index.php?action=post&id=' . $post);
+            header('Location: index.php?action=post&id=' . $post.'#portfolio');
         }
     }
 }
