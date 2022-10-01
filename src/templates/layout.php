@@ -104,7 +104,7 @@ if (!empty($_COOKIE['TOKEN'])) {
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Liste des Posts</a>
+                        <a href="index.php#portfolio">Liste des Posts</a>
                     </li>
                     <li class="page-scroll">
                         <a id="createPostButton" href="#create-post-section">Créer un post</a>
