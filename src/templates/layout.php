@@ -127,7 +127,9 @@ if (!empty($_COOKIE['TOKEN'])) {
                 </ul>
             </div>
             <div>
-                <h4 class="skills currentUser" ><?php if (isset($currentUser)) {echo "Bonjour, ".$currentUser;}?></h4>
+                <h4 class="skills currentUser"><?php if (isset($currentUser)) {
+                                                    echo "Bonjour, " . $currentUser;
+                                                } ?></h4>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -152,7 +154,6 @@ if (!empty($_COOKIE['TOKEN'])) {
 
 
     <script>
-        console.log("before login 1");
         var login = "<?php
                         if (!empty($_COOKIE['TOKEN'])) {
                             $login = "in";
@@ -160,31 +161,14 @@ if (!empty($_COOKIE['TOKEN'])) {
                             $login = "out";
                         }
                         echo $login; ?>";
-        console.log(login);
         if (login == 'in' && document.getElementById("login_button") != null) {
             document.getElementById("login_button").style.display = "none";
             document.getElementById("register_button").style.display = "none";
-            
-            console.log('after login');
         }
-        console.log("depart");
         var logoutButtonFind = document.getElementById("logout_button");
-        console.log("logout find");
-        console.log(logoutButtonFind);
-
         if (login == 'out' && document.getElementById("logout_button")) {
             document.getElementById("logout_button").style.display = "none";
-            // document.getElementById("create-post").style.display = "none";
-            // document.getElementById("create-post-section").style.display = "none";
         }
-
-        console.log("after logout");
-        console.log("before  admin");
-        // if (login == 'out' && document.getElementById("logout_button")) {
-        //     document.getElementById("admin_button").style.display = "none";
-        // }
-        console.log("after admin");
-        console.log("fin");
     </script>
 
 
@@ -253,7 +237,7 @@ if (!empty($_COOKIE['TOKEN'])) {
         console.log("after create post hide")
     </script>
 
-<script>
+    <script>
         console.log("before create post section")
         createPostSectionFind = document.getElementById("create-post-section");
         console.log(createPostSectionFind);

@@ -1,7 +1,7 @@
 <?php $title = "Alexis Troïtzky"; ?>
 
 <?php ob_start(); ?>
-<p><a href="index.php">Retour à la liste des billets</a></p>
+<p><a href="index.php">Retour à la liste des posts</a></p>
 
 <div class="news">
     <h3>
