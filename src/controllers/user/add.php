@@ -34,7 +34,11 @@ class AddUser
 
             $userRepository = new UserRepository();
             $userRepository->connection = new DatabaseConnection();
-            $success = $userRepository->createUser($email, $username, $password);
+            if ($userRepository->checkExistingUsernameRegister($username) === true) {
+                throw new \Exception('Le nom d\'utilisateur existe déjà !');
+            } else {
+                $success = $userRepository->createUser($email, $username, $password);
+            }
             if (!$success) {
                 throw new \Exception('Impossible d\'ajouter l\'utilisateur !');
             } else {
@@ -42,7 +46,7 @@ class AddUser
             }
         } catch (\Exception $e) {
             $errorMessage = $e->getMessage();
-            echo "<script type='text/javascript'>alert('$errorMessage');</script>";
+            echo $errorMessage;
         }
     }
 }
