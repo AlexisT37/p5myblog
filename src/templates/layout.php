@@ -173,7 +173,6 @@ require('../src/controllers/display/listofposts.php')
 
     <?php 
 require('../src/controllers/display/createpost.php')
-    
     ?>
 
     <!-- About Section -->
@@ -309,13 +308,9 @@ require('../src/controllers/display/createpost.php')
         </div>
     </footer>
 
-    <script>
-        var adminButtonFind = document.getElementById("admin_button");
-        var admin = "<?php echo $admin; ?>";
-        if (admin != 1 && adminButtonFind != null) {
-            document.getElementById("admin_button").style.display = "none";
-        }
-    </script>
+    <?php 
+    require('../src/controllers/display/administration.php')
+    ?>
 
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
