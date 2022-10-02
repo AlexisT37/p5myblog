@@ -132,19 +132,9 @@ require('../src/controllers/layout.php') ;
         </div>
     </section>
 
-    <script>
-        var singlePost = "<?php
-                        if ($_GET['action'] === 'post') {
-                            $singlePost = "yes";
-                        } else {
-                            $singlePost = "no";
-                        }
-                        echo $singlePost; ?>";
-        if (singlePost == 'yes' && document.getElementById("list_of_posts") != null) {
-            document.getElementById("list_of_posts").style.display = "none";
-        }
-    </script>
-
+<?php 
+require('../src/controllers/display/listofposts.php')
+?>
 
     <!-- Create Post Section -->
     <section class="success" id="create-post-section">
