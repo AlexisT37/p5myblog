@@ -176,9 +176,7 @@ require('../src/controllers/display/listofposts.php')
         if (login == 'out' && createPostFind != null) {
             document.getElementById("createPostButton").style.display = "none";
         }
-    </script>
 
-    <script>
         createPostSectionFind = document.getElementById("create-post-section");
         if (login == 'out' && createPostSectionFind != null) {
             document.getElementById("create-post-section").style.display = "none";
