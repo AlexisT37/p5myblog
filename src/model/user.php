@@ -61,6 +61,13 @@ class UserRepository
         return $userAlreadyExists;
     }
 
+    public function checkPasswordStrength(string $password): bool
+    {
+        
+
+        return $passwordIsStrongEnough;
+    }
+
     public function getUserIdFromName(string $name): int
     {
         $connection = new DatabaseConnection();
