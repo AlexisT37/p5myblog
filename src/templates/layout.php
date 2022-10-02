@@ -112,23 +112,9 @@ require('../src/controllers/layout.php') ;
     </header>
 
 
-    <script>
-        var login = "<?php
-                        if (!empty($_COOKIE['TOKEN'])) {
-                            $login = "in";
-                        } else {
-                            $login = "out";
-                        }
-                        echo $login; ?>";
-        if (login == 'in' && document.getElementById("login_button") != null) {
-            document.getElementById("login_button").style.display = "none";
-            document.getElementById("register_button").style.display = "none";
-        }
-        var logoutButtonFind = document.getElementById("logout_button");
-        if (login == 'out' && document.getElementById("logout_button")) {
-            document.getElementById("logout_button").style.display = "none";
-        }
-    </script>
+    <?php  
+    require('../src/controllers/display/loginregister.php')
+    ?>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
