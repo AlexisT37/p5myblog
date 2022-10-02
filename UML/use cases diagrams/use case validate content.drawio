@@ -1,0 +1,76 @@
+<mxfile host="65bd71144e">
+    <diagram id="AhA20uXCdIqopeKHl86Q" name="Page-1">
+        <mxGraphModel dx="966" dy="566" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="5v1zRxvSDNw1_mjDPV5--2" value="&lt;div&gt;User&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="200" width="40" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="5v1zRxvSDNw1_mjDPV5--3" value="Click on the Administration button" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="80" y="80" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="5v1zRxvSDNw1_mjDPV5--6" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="5v1zRxvSDNw1_mjDPV5--3" target="5v1zRxvSDNw1_mjDPV5--29" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="410" y="360" as="sourcePoint"/>
+                        <mxPoint x="303.43145750507597" y="108.28427124746179" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5v1zRxvSDNw1_mjDPV5--7" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="5v1zRxvSDNw1_mjDPV5--29" target="2" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="439.9999999999998" y="90" as="sourcePoint"/>
+                        <mxPoint x="520" y="109.03999999999996" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5v1zRxvSDNw1_mjDPV5--18" value="content is validated" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="300" y="440" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="5v1zRxvSDNw1_mjDPV5--27" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="2" target="5v1zRxvSDNw1_mjDPV5--18" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="460" y="475" as="sourcePoint"/>
+                        <mxPoint x="380" y="540" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5v1zRxvSDNw1_mjDPV5--29" value="User is logged in ?" style="rhombus;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="320" y="60" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="5v1zRxvSDNw1_mjDPV5--30" value="Yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="330" y="180" width="40" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5v1zRxvSDNw1_mjDPV5--31" value="error: User must be admin to access Administration page" style="ellipse;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="600" y="170" width="160" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="5v1zRxvSDNw1_mjDPV5--32" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="5v1zRxvSDNw1_mjDPV5--29" target="5v1zRxvSDNw1_mjDPV5--31" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="369.9999999999998" y="160" as="sourcePoint"/>
+                        <mxPoint x="210" y="55" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="5v1zRxvSDNw1_mjDPV5--33" value="No" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="1" vertex="1">
+                    <mxGeometry x="450" y="100" width="40" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5v1zRxvSDNw1_mjDPV5--34" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.038;entryY=0.738;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" target="5v1zRxvSDNw1_mjDPV5--3" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="60" y="180" as="sourcePoint"/>
+                        <mxPoint x="175.36" y="216.07999999999998" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="2" value="User has admin&lt;br&gt;&amp;nbsp;roles ?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="320" y="260" width="120" height="120" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="2" target="5v1zRxvSDNw1_mjDPV5--31">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="380" y="150" as="sourcePoint"/>
+                        <mxPoint x="750" y="210" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="4" value="Yes" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="330" y="380" width="40" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="No" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="450" y="310" width="40" height="30" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
