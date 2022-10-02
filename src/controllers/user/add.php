@@ -44,6 +44,13 @@ class AddUser
             }
 
 
+            if ($userRepository->checkEmailFormat($email) !== true) {
+                throw new \Exception('L\'email n\'a pas le bon format !');
+            }
+
+
+
+
             $success = $userRepository->createUser($email, $username, $password);
             if (!$success) {
                 throw new \Exception('Impossible d\'ajouter l\'utilisateur !');

@@ -78,6 +78,17 @@ class UserRepository
         return $passwordIsStrongEnough;
     }
 
+    public function checkEmailFormat(string $email): bool
+    {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $validEmailFormat = false;
+        } else {
+            $validEmailFormat = true;
+        }
+
+        return $validEmailFormat;
+    }
+
     public function getUserIdFromName(string $name): int
     {
         $connection = new DatabaseConnection();
