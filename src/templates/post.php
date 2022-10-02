@@ -2,6 +2,20 @@
 
 <?php ob_start(); ?>
 
+<!-- Portfolio Grid Section -->
+<section id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div id="list_of_posts" class="col-lg-12 text-center">
+                    <h2><?php echo $post->title?></h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
 <div class="news">
 
     <h3>

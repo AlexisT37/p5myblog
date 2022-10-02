@@ -1,51 +1,10 @@
+
+
+
+
 <?php
-if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['actionLogout'])) {
-    func();
-}
-function func()
-{
-    unset($_COOKIE['TOKEN']);
-}
-
-if (isset($_GET['logout'])) {
-
-    setcookie("TOKEN", null, 1);
-
-    setcookie($_COOKIE['TOKEN'], '', time() - 3600);
-
-    unset($_COOKIE['TOKEN']);
-
-    session_destroy();
-
-    header('Location: index.php');
-
-    exit;
-}
-
-// Set admin flag
-if (!empty($_COOKIE['TOKEN'])) {
-    $myToken = $_COOKIE['TOKEN'];
-    $adminJWTCheck = new JWT();
-    $adminInJWT = $adminJWTCheck->isAdmin($myToken);
-    if ($adminInJWT === true) {
-        $admin = 1;
-    } else {
-        $admin = 0;
-    }
-} else {
-    $admin = 0;
-}
-
-
-// Set User flag
-if (!empty($_COOKIE['TOKEN'])) {
-    $currentUserPayload = $adminJWTCheck->getPayload($myToken);
-    $currentUser = $currentUserPayload['username'];
-}
+require('../src/controllers/layout.php') ;
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,7 +36,7 @@ if (!empty($_COOKIE['TOKEN'])) {
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script src="../src/js/layout.js" defer></script> 
 </head>
 
 
@@ -153,23 +112,9 @@ if (!empty($_COOKIE['TOKEN'])) {
     </header>
 
 
-    <script>
-        var login = "<?php
-                        if (!empty($_COOKIE['TOKEN'])) {
-                            $login = "in";
-                        } else {
-                            $login = "out";
-                        }
-                        echo $login; ?>";
-        if (login == 'in' && document.getElementById("login_button") != null) {
-            document.getElementById("login_button").style.display = "none";
-            document.getElementById("register_button").style.display = "none";
-        }
-        var logoutButtonFind = document.getElementById("logout_button");
-        if (login == 'out' && document.getElementById("logout_button")) {
-            document.getElementById("logout_button").style.display = "none";
-        }
-    </script>
+    <?php  
+    require('../src/controllers/display/loginregister.php')
+    ?>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -187,19 +132,9 @@ if (!empty($_COOKIE['TOKEN'])) {
         </div>
     </section>
 
-    <script>
-        var singlePost = "<?php
-                        if ($_GET['action'] === 'post') {
-                            $singlePost = "yes";
-                        } else {
-                            $singlePost = "no";
-                        }
-                        echo $singlePost; ?>";
-        if (singlePost == 'yes' && document.getElementById("list_of_posts") != null) {
-            document.getElementById("list_of_posts").style.display = "none";
-        }
-    </script>
-
+<?php 
+require('../src/controllers/display/listofposts.php')
+?>
 
     <!-- Create Post Section -->
     <section class="success" id="create-post-section">
@@ -236,19 +171,9 @@ if (!empty($_COOKIE['TOKEN'])) {
         </div>
     </section>
 
-    <script>
-        createPostFind = document.getElementById("createPostButton");
-        if (login == 'out' && createPostFind != null) {
-            document.getElementById("createPostButton").style.display = "none";
-        }
-    </script>
-
-    <script>
-        createPostSectionFind = document.getElementById("create-post-section");
-        if (login == 'out' && createPostSectionFind != null) {
-            document.getElementById("create-post-section").style.display = "none";
-        }
-    </script>
+    <?php 
+require('../src/controllers/display/createpost.php')
+    ?>
 
     <!-- About Section -->
     <section class="success" id="about">
@@ -383,13 +308,9 @@ if (!empty($_COOKIE['TOKEN'])) {
         </div>
     </footer>
 
-    <script>
-        var adminButtonFind = document.getElementById("admin_button");
-        var admin = "<?php echo $admin; ?>";
-        if (admin != 1 && adminButtonFind != null) {
-            document.getElementById("admin_button").style.display = "none";
-        }
-    </script>
+    <?php 
+    require('../src/controllers/display/administration.php')
+    ?>
 
 
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
