@@ -171,17 +171,10 @@ require('../src/controllers/display/listofposts.php')
         </div>
     </section>
 
-    <script>
-        createPostFind = document.getElementById("createPostButton");
-        if (login == 'out' && createPostFind != null) {
-            document.getElementById("createPostButton").style.display = "none";
-        }
-
-        createPostSectionFind = document.getElementById("create-post-section");
-        if (login == 'out' && createPostSectionFind != null) {
-            document.getElementById("create-post-section").style.display = "none";
-        }
-    </script>
+    <?php 
+require('../src/controllers/display/createpost.php')
+    
+    ?>
 
     <!-- About Section -->
     <section class="success" id="about">
