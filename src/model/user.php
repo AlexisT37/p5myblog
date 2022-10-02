@@ -63,7 +63,17 @@ class UserRepository
 
     public function checkPasswordStrength(string $password): bool
     {
-        
+        $uppercase = preg_match('@[A-Z]@', $password);
+        $lowercase = preg_match('@[a-z]@', $password);
+        $number    = preg_match('@[0-9]@', $password);
+        $specialChars = preg_match('@[^\w]@', $password);
+
+        // If any of the requirements are not met
+        if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+            $passwordIsStrongEnough = false;
+        } else {
+            $passwordIsStrongEnough = true;
+        }
 
         return $passwordIsStrongEnough;
     }
