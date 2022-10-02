@@ -22,6 +22,7 @@ class AddUser
                 $passwordTest1 = $_POST['txt_pwd'];
                 $passwordTest2 = $_POST['txt_password_verify'];
                 $passwordMatch = ($passwordTest1 === $passwordTest2);
+
                 // Verify if the two passwords match
                 if ($passwordMatch == true) {
                     $password = password_hash($_POST['txt_pwd'], PASSWORD_BCRYPT);
@@ -36,9 +37,21 @@ class AddUser
             $userRepository->connection = new DatabaseConnection();
             if ($userRepository->checkExistingUsernameRegister($username) === true) {
                 throw new \Exception('Le nom d\'utilisateur existe déjà !');
-            } else {
-                $success = $userRepository->createUser($email, $username, $password);
+            } 
+            
+            if ($userRepository->checkPasswordStrength($passwordTest1) !== true) {
+                throw new \Exception('Le mot de passe n\'est pas assez fort !');
             }
+
+
+            if ($userRepository->checkEmailFormat($email) !== true) {
+                throw new \Exception('L\'email n\'a pas le bon format !');
+            }
+
+
+
+
+            $success = $userRepository->createUser($email, $username, $password);
             if (!$success) {
                 throw new \Exception('Impossible d\'ajouter l\'utilisateur !');
             } else {

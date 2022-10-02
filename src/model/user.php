@@ -61,6 +61,34 @@ class UserRepository
         return $userAlreadyExists;
     }
 
+    public function checkPasswordStrength(string $password): bool
+    {
+        $uppercase = preg_match('@[A-Z]@', $password);
+        $lowercase = preg_match('@[a-z]@', $password);
+        $number    = preg_match('@[0-9]@', $password);
+        $specialChars = preg_match('@[^\w]@', $password);
+
+        // If any of the requirements are not met
+        if (!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password) < 8) {
+            $passwordIsStrongEnough = false;
+        } else {
+            $passwordIsStrongEnough = true;
+        }
+
+        return $passwordIsStrongEnough;
+    }
+
+    public function checkEmailFormat(string $email): bool
+    {
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $validEmailFormat = false;
+        } else {
+            $validEmailFormat = true;
+        }
+
+        return $validEmailFormat;
+    }
+
     public function getUserIdFromName(string $name): int
     {
         $connection = new DatabaseConnection();
