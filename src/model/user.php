@@ -43,6 +43,24 @@ class UserRepository
         return $user;
     }
 
+    public function checkExistingUsernameRegister(string $username): bool
+    {
+        $statement = $this->connection->getConnection()->prepare(
+            "SELECT username FROM user WHERE username = ?"
+        );
+        $statement->execute([$username]);
+
+        $row = $statement->fetch();
+        $userAlreadyExists = false;
+        if ($row !== false) {
+            $userAlreadyExists = true;
+        } else {
+            $userAlreadyExists = false;
+        }
+
+        return $userAlreadyExists;
+    }
+
     public function getUserIdFromName(string $name): int
     {
         $connection = new DatabaseConnection();
