@@ -1,6 +1,6 @@
 <?php
 
-session_start();
+// session_start();
 
 const SECRET = 'p9uh020dp03bpo0ugouontu';
 

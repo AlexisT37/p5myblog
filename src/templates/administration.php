@@ -1,7 +1,7 @@
 <html>
 
 <?php 
-'../src/controllers/display/token.php'
+require('../src/controllers/display/token.php');
 ?>
 <head>
 
