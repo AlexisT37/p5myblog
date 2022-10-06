@@ -36,6 +36,20 @@ require('../src/controllers/layout.php') ;
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+        
+    <?php $singlePost = ($_GET['action'] === 'post') ? "yes" : "no";?>
+    <script>
+        // stored all global js variables (with PHP connection)
+        var singlePost = <?php echo json_encode($singlePost, JSON_HEX_TAG); ?>; // Don't forget the extra semicolon!
+        var token = <?php echo json_encode($_COOKIE["TOKEN"], JSON_HEX_TAG); ?>; // Don't forget the extra semicolon!
+
+        
+
+
+    </script>
+
+    <!-- Import JS Files -->
     <script src="../src/js/layout.js" defer></script> 
 </head>
 
@@ -336,10 +350,6 @@ require('../src/controllers/display/createpost.php')
 
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
-
-
-
-
 
 
 </body>

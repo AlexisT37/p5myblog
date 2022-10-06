@@ -1,1 +1,6 @@
-console.log("toto");
+console.log("login")
+console.log(login)
+console.log("token")
+console.log(token)
+console.log("singlePost")
+console.log(singlePost)
