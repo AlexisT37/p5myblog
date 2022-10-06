@@ -147,9 +147,7 @@ require('../src/controllers/layout.php') ;
         </div>
     </section>
 
-<?php 
-require('../src/controllers/display/listofposts.php')
-?>
+
 
     <!-- Create Post Section -->
     <section class="success" id="create-post-section">
