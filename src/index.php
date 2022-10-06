@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <?php
 
 require_once('../src/controllers/comment/add.php');

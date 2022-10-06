@@ -5,10 +5,6 @@
 <?php
 require('../src/controllers/layout.php') ;
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-
 <head>
 
     <meta charset="utf-8">
@@ -45,12 +41,17 @@ require('../src/controllers/layout.php') ;
         var admin = <?php echo json_encode($admin, JSON_HEX_TAG); ?>; // Don't forget the extra semicolon!
     </script>
 
+<script src="./js/tinymce/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: '#content'
+      });
+    </script>
+
     <!-- Import JS Files -->
     <script src="../src/js/layout.js" defer></script> 
 </head>
 
-
-<!-- ██████████████████████████████████████████████████████████████████████████████████████████████████████ -->
 <!-- BOOTSTRAPT CONTENT -->
 
 <body id="page-top" class="index">
