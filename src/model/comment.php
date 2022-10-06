@@ -26,7 +26,7 @@ class CommentRepository
 {
     public DatabaseConnection $connection;
 
-    public function validateComment($identifier): bool
+    public function validateComment(int $identifier): bool
     {
         $statement = $this->connection->getConnection()->prepare(
             'UPDATE comments SET validated = 1 WHERE id = ?'
@@ -86,7 +86,7 @@ class CommentRepository
         return $comments;
     }
 
-    public function deleteComment($id): bool
+    public function deleteComment(int $id): bool
     {
         $statement = $this->connection->getConnection()->prepare(
             'UPDATE comments SET deleted = 1 WHERE id = ?'
