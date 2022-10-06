@@ -184,10 +184,6 @@ require('../src/controllers/layout.php') ;
         </div>
     </section>
 
-    <?php 
-require('../src/controllers/display/createpost.php')
-    ?>
-
     <!-- About Section -->
     <section class="success" id="about">
         <div class="container">

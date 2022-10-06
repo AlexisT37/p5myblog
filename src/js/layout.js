@@ -12,6 +12,16 @@
             document.getElementById("list_of_posts").style.display = "none";
         }
 
+        createPostFind = document.getElementById("createPostButton");
+        if (login == 'out' && createPostFind != null) {
+            document.getElementById("createPostButton").style.display = "none";
+        }
+
+        createPostSectionFind = document.getElementById("create-post-section");
+        if (login == 'out' && createPostSectionFind != null) {
+            document.getElementById("create-post-section").style.display = "none";
+        }
+
 console.log("login")
 console.log(login)
 console.log("token")
