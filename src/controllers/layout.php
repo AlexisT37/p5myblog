@@ -1,9 +1,5 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['actionLogout'])) {
-    unsetToken();
-}
-function unsetToken(): void
-{
     unset($_COOKIE['TOKEN']);
 }
 
