@@ -33,7 +33,7 @@ class JWT
         return $jwt;
     }
 
-    public function check(string $token, string $secret)
+    public function check(string $token, string $secret): bool
     {
         //get header and payload
         $header = $this->getHeader($token);
@@ -46,7 +46,7 @@ class JWT
         return $validToken;
     }
 
-    public function getHeader(string $token)
+    public function getHeader(string $token): array
     {
         //explode the token
         $array = explode('.', $token);
@@ -55,7 +55,7 @@ class JWT
         return $header;
     }
 
-    public function getPayload(string $token)
+    public function getPayload(string $token): array
     {
         //explode the token
         $array = explode('.', $token);
