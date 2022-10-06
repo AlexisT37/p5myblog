@@ -27,7 +27,7 @@ if (isset($_POST['but_submit'])) {
             // $hash = mysqli_fetch_row($resultPassword);
 
             //Better sql without injection
-            $sql = "SELECT password FROM user WHERE username=?"; // SQL with parameters
+            $sql = "SELECT password, id, roles FROM user WHERE username=?"; // SQL with parameters
             $stmt = $con->prepare($sql);
             $stmt->bind_param("s", $uname);
             $stmt->execute();
@@ -43,22 +43,11 @@ if (isset($_POST['but_submit'])) {
 
                 $username = $uname;
 
+                $userId = $row['id'];
 
-                $queryId = "select id from user where username='" . $username . "'";
-                $resultId = mysqli_query($con, $queryId);
-                $userIdString = mysqli_fetch_row($resultId)[0];
-                $userId = (int)$userIdString;
-
-
-
-                $queryRoles = "select roles from user where username='" . $username . "'";
-                $resultRoles = mysqli_query($con, $queryRoles);
-                $rowRoles = mysqli_fetch_row($resultRoles);
-
-                $rolesRaw = $rowRoles[0];
+                $rolesRaw = $row['roles'];
                 $rolesquote = str_replace("'", "", $rolesRaw);
                 $roles = explode(",", $rolesquote);
-
 
                 //header
                 $header = [
