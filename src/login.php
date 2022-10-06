@@ -1,7 +1,6 @@
 <?php
 include "config.php";
 require_once('classes/JWT.php');
-// require('classes/dotenv.php');
 
 use Dotenv\DotEnv;
 
@@ -64,7 +63,6 @@ if (isset($_POST['but_submit'])) {
                 //payload made for the user
                 $payload = [
                     'userId' => $userId,
-                    // 'user_id' => $uname,
                     'username' => $uname,
                     'roles' => $roles
                 ];
