@@ -1,5 +1,4 @@
 <?php
-// require('../src/config.php');
 class JWT
 {
     public function generate(array $header, array $payload, string $secret, int $validity = 86400): string

@@ -158,7 +158,6 @@ class CommentRepository
             $authorUsername = $decodedTokenInfo['username'];
             $authorFetchId = new UserRepository();
             $author = $authorFetchId->getUserIdFromName($authorUsername);
-            // $modifiedDate = new DateTime();
 
             $statement = $this->connection->getConnection()->prepare(
                 'UPDATE comments SET author = ?, comment = ?, modified_date = NOW() WHERE id = ?'

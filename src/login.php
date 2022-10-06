@@ -22,10 +22,6 @@ if (isset($_POST['but_submit'])) {
         $count = $row['cntUser'];
 
         if ($count > 0) {
-            // $queryPassword = "select password from user where username='" . $uname . "'";
-            // $resultPassword = mysqli_query($con, $queryPassword);
-            // $hash = mysqli_fetch_row($resultPassword);
-
             //Better sql without injection
             $sql = "SELECT password, id, roles FROM user WHERE username=?"; // SQL with parameters
             $stmt = $con->prepare($sql);
@@ -38,7 +34,7 @@ if (isset($_POST['but_submit'])) {
 
             $goodpassword = password_verify($password, $databasePassword);
 
-            if ($goodpassword == true) {
+            if ($goodpassword === true) {
 
 
                 $username = $uname;

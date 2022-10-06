@@ -24,7 +24,7 @@ class AddUser
                 $passwordMatch = ($passwordTest1 === $passwordTest2);
 
                 // Verify if the two passwords match
-                if ($passwordMatch == true) {
+                if ($passwordMatch === true) {
                     $password = password_hash($_POST['txt_pwd'], PASSWORD_BCRYPT);
                 } else {
                     throw new \Exception('Les mots de passe ne correspondent pas.');

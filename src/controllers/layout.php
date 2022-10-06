@@ -1,5 +1,5 @@
 <?php
-if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['actionLogout'])) {
+if ($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['actionLogout'])) {
     func();
 }
 function func(): void

@@ -13,7 +13,6 @@ try {
 
     // Check connection
     if (!$con) {
-        // die("Connection failed: " . mysqli_connect_error());
         throw new Exception("Connection failed.");
     }
 } catch (Exception $e) {
