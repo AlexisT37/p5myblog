@@ -43,3 +43,8 @@ if (!empty($_COOKIE['TOKEN'])) {
     $currentUser = $currentUserPayload['username'];
 }
 ?>
+
+
+<?php $login = (isset($_COOKIE['TOKEN'])) ? "in" : "out";?>
+    <?php $singlePost = ($_GET['action'] === 'post') ? "yes" : "no";?>
+    <?php $token = (isset($_COOKIE['TOKEN'])) ? $_COOKIE['TOKEN'] : false;?>

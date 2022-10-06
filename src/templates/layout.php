@@ -36,6 +36,16 @@ require('../src/controllers/layout.php') ;
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script>
+        // stored all global js variables (with PHP connection)
+        var singlePost = <?php echo json_encode($singlePost, JSON_HEX_TAG); ?>; // Don't forget the extra semicolon!
+        var token = <?php echo json_encode($token, JSON_HEX_TAG); ?>; // Don't forget the extra semicolon!
+        var login = <?php echo json_encode($login, JSON_HEX_TAG); ?>; // Don't forget the extra semicolon!
+        var admin = <?php echo json_encode($admin, JSON_HEX_TAG); ?>; // Don't forget the extra semicolon!
+    </script>
+
+    <!-- Import JS Files -->
     <script src="../src/js/layout.js" defer></script> 
 </head>
 
@@ -112,9 +122,6 @@ require('../src/controllers/layout.php') ;
     </header>
 
 
-    <?php  
-    require('../src/controllers/display/loginregister.php')
-    ?>
 
     <!-- Portfolio Grid Section -->
     <section id="portfolio">
@@ -132,9 +139,7 @@ require('../src/controllers/layout.php') ;
         </div>
     </section>
 
-<?php 
-require('../src/controllers/display/listofposts.php')
-?>
+
 
     <!-- Create Post Section -->
     <section class="success" id="create-post-section">
@@ -170,10 +175,6 @@ require('../src/controllers/display/listofposts.php')
             </div>
         </div>
     </section>
-
-    <?php 
-require('../src/controllers/display/createpost.php')
-    ?>
 
     <!-- About Section -->
     <section class="success" id="about">
@@ -308,18 +309,12 @@ require('../src/controllers/display/createpost.php')
         </div>
     </footer>
 
-    <?php 
-    require('../src/controllers/display/administration.php')
-    ?>
-
-
     <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
     </div>
-
 
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
@@ -336,11 +331,6 @@ require('../src/controllers/display/createpost.php')
 
     <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
-
-
-
-
-
 
 </body>
 
