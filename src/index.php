@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="../favicon.ico">
+
 <?php
 
 require_once('../src/controllers/comment/add.php');

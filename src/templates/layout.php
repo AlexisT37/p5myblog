@@ -21,6 +21,8 @@ require('../src/controllers/layout.php') ;
     <!-- Theme CSS -->
     <link href="css/freelancer.min.css" rel="stylesheet">
 
+
+
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">

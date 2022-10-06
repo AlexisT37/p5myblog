@@ -13,8 +13,5 @@
             "name": "AlexisT37",
             "email": "alexistroitzky@gmail.com"
         }
-    ],
-    "require": {
-        "twig/twig": "^3.4"
-    }
+    ]
 }
