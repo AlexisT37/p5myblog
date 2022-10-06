@@ -2,7 +2,7 @@
 if ($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['actionLogout'])) {
     func();
 }
-function func()
+function func(): void
 {
     unset($_COOKIE['TOKEN']);
 }
@@ -19,7 +19,6 @@ if (isset($_GET['logout'])) {
 
     header('Location: index.php');
 
-    exit;
 }
 
 // Set admin flag

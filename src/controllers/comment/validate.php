@@ -13,7 +13,7 @@ use JWT;
 
 class ValidateComment
 {
-    public function execute(int $identifier)
+    public function execute(int $identifier): void
     {
         $postRepository = new CommentRepository();
         $postRepository->connection = new DatabaseConnection();

@@ -32,7 +32,7 @@ class PostRepository
 {
     public DatabaseConnection $connection;
 
-    public function createPost(string $title,  string $content, string $leadParagraph, $UserId): bool
+    public function createPost(string $title,  string $content, string $leadParagraph, int $UserId): bool
     {
         $statement = $this->connection->getConnection()->prepare(
             'INSERT INTO posts(title, content, leadParagraph, User_Id, creation_date, modified_date) VALUES(?, ?, ?, ?, NOW(), NOW())'
@@ -86,7 +86,7 @@ class PostRepository
         return $posts;
     }
 
-    public function validatePost($id): bool
+    public function validatePost(int $id): bool
     {
         $statement = $this->connection->getConnection()->prepare(
             'UPDATE posts SET validated = 1 WHERE id = ?'
@@ -96,7 +96,7 @@ class PostRepository
         return ($affectedLines > 0);
     }
 
-    public function deletePost($id): bool
+    public function deletePost(int $id): bool
     {
         $statement = $this->connection->getConnection()->prepare(
             'UPDATE posts SET deleted = 1 WHERE id = ?'

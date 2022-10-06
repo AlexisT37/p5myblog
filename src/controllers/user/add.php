@@ -10,7 +10,7 @@ use Application\Model\User\UserRepository;
 
 class AddUser
 {
-    public function execute()
+    public function execute(): void
     {
         try {
             $email = null;

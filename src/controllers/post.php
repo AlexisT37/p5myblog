@@ -15,7 +15,7 @@ use JWT;
 
 class Post
 {
-    public function execute(int $identifier)
+    public function execute(int $identifier): void
     {
         $connection = new DatabaseConnection();
 

@@ -10,7 +10,7 @@ use Application\Model\Comment\CommentRepository;
 
 class AddComment
 {
-    public function execute(string $post, array $input)
+    public function execute(string $post, array $input): void
     {
         $author = null;
         $comment = null;

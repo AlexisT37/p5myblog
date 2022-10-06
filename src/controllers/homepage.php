@@ -13,7 +13,7 @@ use Application\Model\User\UserRepository;
 
 class Homepage
 {
-    public function execute()
+    public function execute(): void
     {
         $connection = new DatabaseConnection();
         $postRepository = new PostRepository();

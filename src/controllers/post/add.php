@@ -11,7 +11,7 @@ use JWT;
 
 class AddPost
 {
-    public function execute()
+    public function execute(): void
     {
         $title = null;
         $content = null;

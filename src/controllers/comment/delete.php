@@ -12,7 +12,7 @@ use JWT;
 
 class DeleteComment
 {
-    public function execute(int $identifier)
+    public function execute(int $identifier): void
     {
         $commentRepository = new CommentRepository();
         $commentRepository->connection = new DatabaseConnection();

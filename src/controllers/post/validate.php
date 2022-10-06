@@ -12,7 +12,7 @@ use JWT;
 
 class ValidatePost
 {
-    public function execute(int $identifier)
+    public function execute(int $identifier): void
     {
         $postRepository = new PostRepository();
         $postRepository->connection = new DatabaseConnection();
