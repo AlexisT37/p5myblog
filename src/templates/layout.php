@@ -40,9 +40,7 @@ require('../src/controllers/layout.php') ;
     
         
         
-    <?php $login = (isset($_COOKIE['TOKEN'])) ? "in" : "out";?>
-    <?php $singlePost = ($_GET['action'] === 'post') ? "yes" : "no";?>
-    <?php $token = (isset($_COOKIE['TOKEN'])) ? $_COOKIE['TOKEN'] : false;?>
+
     <script>
         // stored all global js variables (with PHP connection)
         var singlePost = <?php echo json_encode($singlePost, JSON_HEX_TAG); ?>; // Don't forget the extra semicolon!
