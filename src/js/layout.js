@@ -22,6 +22,11 @@
             document.getElementById("create-post-section").style.display = "none";
         }
 
+        var adminButtonFind = document.getElementById("admin_button");
+        if (admin != 1 && adminButtonFind != null) {
+            document.getElementById("admin_button").style.display = "none";
+        }
+
 console.log("login")
 console.log(login)
 console.log("token")
