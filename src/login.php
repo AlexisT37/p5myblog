@@ -11,10 +11,13 @@ if (isset($_POST['but_submit'])) {
 
     if ($uname != "" && $password != "") {
 
-
-        $sql_query = "select count(*) as cntUser from user where username='" . $uname . "'";
-        $result = mysqli_query($con, $sql_query);
-        $row = mysqli_fetch_array($result);
+        //Better sql without injection
+        $sql = "SELECT count(*) as cntUser FROM user WHERE username=?"; // SQL with parameters
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("s", $uname);
+        $stmt->execute();
+        $result = $stmt->get_result(); // get the mysqli result
+        $row = $result->fetch_assoc(); // fetch the data   
 
         $count = $row['cntUser'];
 
