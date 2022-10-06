@@ -22,7 +22,7 @@ class Comment
     public int $deleted;
 }
 
-class CommentRepository
+class CommentRepository extends Comment
 {
     public DatabaseConnection $connection;
 
