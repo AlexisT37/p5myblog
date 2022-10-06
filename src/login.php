@@ -11,40 +11,43 @@ if (isset($_POST['but_submit'])) {
 
     if ($uname != "" && $password != "") {
 
-
-        $sql_query = "select count(*) as cntUser from user where username='" . $uname . "'";
-        $result = mysqli_query($con, $sql_query);
-        $row = mysqli_fetch_array($result);
+        //Better sql without injection
+        $sql = "SELECT count(*) as cntUser FROM user WHERE username=?"; // SQL with parameters
+        $stmt = $con->prepare($sql);
+        $stmt->bind_param("s", $uname);
+        $stmt->execute();
+        $result = $stmt->get_result(); // get the mysqli result
+        $row = $result->fetch_assoc(); // fetch the data   
 
         $count = $row['cntUser'];
 
         if ($count > 0) {
-            $queryPassword = "select password from user where username='" . $uname . "'";
-            $resultPassword = mysqli_query($con, $queryPassword);
-            $hash = mysqli_fetch_row($resultPassword);
-            $goodpassword = password_verify($password, $hash[0]);
+            // $queryPassword = "select password from user where username='" . $uname . "'";
+            // $resultPassword = mysqli_query($con, $queryPassword);
+            // $hash = mysqli_fetch_row($resultPassword);
+
+            //Better sql without injection
+            $sql = "SELECT password, id, roles FROM user WHERE username=?"; // SQL with parameters
+            $stmt = $con->prepare($sql);
+            $stmt->bind_param("s", $uname);
+            $stmt->execute();
+            $result = $stmt->get_result(); // get the mysqli result
+            $row = $result->fetch_assoc(); // fetch the data   
+
+            $databasePassword = $row['password'];
+
+            $goodpassword = password_verify($password, $databasePassword);
 
             if ($goodpassword == true) {
 
 
                 $username = $uname;
 
+                $userId = $row['id'];
 
-                $queryId = "select id from user where username='" . $username . "'";
-                $resultId = mysqli_query($con, $queryId);
-                $userIdString = mysqli_fetch_row($resultId)[0];
-                $userId = (int)$userIdString;
-
-
-
-                $queryRoles = "select roles from user where username='" . $username . "'";
-                $resultRoles = mysqli_query($con, $queryRoles);
-                $rowRoles = mysqli_fetch_row($resultRoles);
-
-                $rolesRaw = $rowRoles[0];
+                $rolesRaw = $row['roles'];
                 $rolesquote = str_replace("'", "", $rolesRaw);
                 $roles = explode(",", $rolesquote);
-
 
                 //header
                 $header = [
