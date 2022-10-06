@@ -9,7 +9,7 @@ require_once('C:/laragon/www/p5myblog/src/config.php');
 use JWT;
 use Application\Lib\Database\DatabaseConnection;
 use Application\Model\User\UserRepository;
-
+use Dotenv\DotEnv;
 class Comment
 {
     public int $identifier;
@@ -122,10 +122,12 @@ class CommentRepository
 
     public function createComment(int $post, string $author = null, string $comment): bool
     {
+        (new DotEnv("../.env"))->load();
+        $SECRET = getenv('SECRET');
 
         $tokenFromCookies = $_COOKIE['TOKEN'];
         $tokenVerifProcess = new JWT();
-        $validToken = $tokenVerifProcess->check($tokenFromCookies, SECRET);
+        $validToken = $tokenVerifProcess->check($tokenFromCookies, $SECRET);
         if ($validToken === true) {
             $decodedTokenInfo = $tokenVerifProcess->getPayload($tokenFromCookies);
             $author = $decodedTokenInfo['username'];
@@ -150,9 +152,12 @@ class CommentRepository
 
     public function updateComment(int $identifier, string $comment): bool
     {
+        (new DotEnv("../.env"))->load();
+        $SECRET = getenv('SECRET');
+
         $tokenFromCookies = $_COOKIE['TOKEN'];
         $tokenVerifProcess = new JWT();
-        $validToken = $tokenVerifProcess->check($tokenFromCookies, SECRET);
+        $validToken = $tokenVerifProcess->check($tokenFromCookies, $SECRET);
         if ($validToken === true) {
             $decodedTokenInfo = $tokenVerifProcess->getPayload($tokenFromCookies);
             $authorUsername = $decodedTokenInfo['username'];

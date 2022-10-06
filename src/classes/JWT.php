@@ -1,8 +1,19 @@
 <?php
+
+require('dotenv.php');
+
+use Dotenv\DotEnv;
+
+
+
 class JWT
 {
     public function generate(array $header, array $payload, string $secret, int $validity = 86400): string
     {
+        (new DotEnv("../.env"))->load();
+
+        $SECRET = getenv('SECRET');
+
         if ($validity > 0) {
             $now = new Datetime();
             $expiration = $now->getTimestamp() + $validity;
@@ -20,7 +31,7 @@ class JWT
         $base64payload = str_replace(["+", "/", "="], ["-", "_", ""], $base64payload);
 
         //signature
-        $secret = base64_encode(SECRET);
+        $secret = base64_encode($SECRET);
 
         //+, / and = are not supported
         //make token

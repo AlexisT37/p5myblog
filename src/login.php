@@ -1,6 +1,16 @@
 <?php
 include "config.php";
 require_once('classes/JWT.php');
+// require('classes/dotenv.php');
+
+use Dotenv\DotEnv;
+
+(new DotEnv("../.env"))->load();
+
+$SECRET = getenv('SECRET');
+
+// dev
+
 
 
 if (isset($_POST['but_submit'])) {
@@ -65,7 +75,7 @@ if (isset($_POST['but_submit'])) {
 
                 //validity is 60 seconds
                 //new token is 1 hour not one day like the tutorial
-                $token = $jwt->generate($header, $payload, SECRET, 3600);
+                $token = $jwt->generate($header, $payload, $SECRET, 3600);
 
 
                 setcookie("TOKEN", $token);

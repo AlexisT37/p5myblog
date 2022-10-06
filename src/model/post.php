@@ -13,6 +13,7 @@ use Application\Lib\Database\DatabaseConnection;
 use Application\Model\User\UserRepository;
 use DateTime;
 use JWT;
+use Dotenv\DotEnv;
 
 class Post
 {   
@@ -108,9 +109,13 @@ class PostRepository
 
     public function updatePost(int $identifier, string $content, string $leadParagraph, string $title): bool
     {
+
+        (new DotEnv("../.env"))->load();
+        $SECRET = getenv('SECRET');
+
         $tokenFromCookies = $_COOKIE['TOKEN'];
         $tokenVerifProcess = new JWT();
-        $validToken = $tokenVerifProcess->check($tokenFromCookies, SECRET);
+        $validToken = $tokenVerifProcess->check($tokenFromCookies, $SECRET);
         if ($validToken === true) {
             $decodedTokenInfo = $tokenVerifProcess->getPayload($tokenFromCookies);
             $authorUsername = $decodedTokenInfo['username'];
