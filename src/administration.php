@@ -2,11 +2,11 @@
 
 require_once('../src/lib/database.php');
 require_once('../src/model/post.php');
-require_once('../src/model/comment.php');
+require_once('../src/controllers/comment/CommentRepository.php');
 
 use Application\Lib\Database\DatabaseConnection;
 use Application\Model\Post\PostRepository;
-use Application\Model\Comment\CommentRepository;
+use Application\Controllers\Comment\CommentRepository\CommentRepository;
 
 ob_start();
 
