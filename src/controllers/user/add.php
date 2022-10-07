@@ -3,10 +3,11 @@
 namespace Application\Controllers\User\Add;
 
 require_once('C:/laragon/www/p5myblog/src/lib/database.php');
-require_once('C:/laragon/www/p5myblog/src/model/user.php');
+require_once('../src/controllers/user/UserRepository.php');
+
 
 use Application\Lib\Database\DatabaseConnection;
-use Application\Model\User\UserRepository;
+use Application\Controllers\User\UserRepository\UserRepository;
 
 class AddUser
 {

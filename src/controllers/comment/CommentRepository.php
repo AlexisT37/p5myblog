@@ -6,12 +6,15 @@ require_once('C:/laragon/www/p5myblog/src/lib/database.php');
 require_once('C:/laragon/www/p5myblog/src/classes/JWT.php');
 require_once('C:/laragon/www/p5myblog/src/config.php');
 require_once('C:/laragon/www/p5myblog/src/model/comment.php');
+require_once('../src/controllers/user/UserRepository.php');
+
 
 use JWT;
 use Application\Lib\Database\DatabaseConnection;
-use Application\Model\User\UserRepository;
 use Dotenv\DotEnv;
 use Application\Model\Comment\Comment;
+use Application\Controllers\User\UserRepository\UserRepository;
+
 
 class CommentRepository extends Comment
 {

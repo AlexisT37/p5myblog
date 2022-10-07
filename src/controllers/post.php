@@ -5,15 +5,17 @@ namespace Application\Controllers\Post;
 require_once('../src/lib/database.php');
 require_once('../src/controllers/comment/CommentRepository.php');
 require_once('../src/model/post.php');
-require_once('../src/model/user.php');
 require_once('../src/controllers/post/PostRepository.php');
+require_once('../src/controllers/user/UserRepository.php');
+
 
 
 use Application\Lib\Database\DatabaseConnection;
 use Application\Controllers\Comment\CommentRepository\CommentRepository;
 use Application\Controllers\Post\PostRepository\PostRepository;
+use Application\Controllers\User\UserRepository\UserRepository;
 
-use Application\Model\User\UserRepository;
+
 use JWT;
 
 class Post
