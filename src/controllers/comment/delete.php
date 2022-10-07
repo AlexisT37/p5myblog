@@ -7,7 +7,7 @@ require_once('C:/laragon/www/p5myblog/src/lib/database.php');
 require_once('C:/laragon/www/p5myblog/src/model/comment.php');
 
 use Application\Lib\Database\DatabaseConnection;
-use Application\Model\Comment\CommentRepository;
+use Application\Controllers\Comment\CommentRepository\CommentRepository;
 use JWT;
 
 class DeleteComment

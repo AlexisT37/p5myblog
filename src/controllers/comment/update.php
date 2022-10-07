@@ -6,8 +6,7 @@ require_once('../src/lib/database.php');
 require_once('../src/model/comment.php');
 
 use Application\Lib\Database\DatabaseConnection;
-use Application\Model\Comment\CommentRepository;
-
+use Application\Controllers\Comment\CommentRepository\CommentRepository;
 class UpdateComment
 {
     public function execute(int $identifier, ?array $input): void
