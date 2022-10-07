@@ -5,11 +5,14 @@ namespace Application\Controllers\Homepage;
 require_once('../src/lib/database.php');
 require_once('../src/model/post.php');
 require_once('../src/model/user.php');
+require_once('../src/controllers/post/PostRepository.php');
+
 
 
 use Application\Lib\Database\DatabaseConnection;
-use Application\Model\Post\PostRepository;
 use Application\Model\User\UserRepository;
+use Application\Controllers\Post\PostRepository\PostRepository;
+
 
 class Homepage
 {
