@@ -31,16 +31,16 @@
 
 </head>
 
-<body class="index">
+<body class="index" id="body_login">
     <div class="container col-lg-12 text-center" id="container_login">
         <form method="post" action="">
-            <div id="div_login" class="col-lg-12 text-center">
+            <div id="div_login" class="row justify-content-center">
                 <h1>Login</h1>
                 <div>
                     <input type="text" class="textbox" id="txt_uname" name="txt_uname" placeholder="Username" />
                 </div>
                 <div>
-                    <input type="password" class="textbox" id="txt_uname" name="txt_pwd" placeholder="Password" />
+                    <input type="password" class="textbox" id="txt_pwd" name="txt_pwd" placeholder="Password" />
                 </div>
                 <div>
                     <input class="btn btn-success btn-lg" type="submit" value="Login" name="but_submit" id="but_submit" />

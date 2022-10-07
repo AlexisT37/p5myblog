@@ -31,12 +31,12 @@
 
 </head>
 
-<body>
+<body id="body_login">
     <div class="container col-lg-12 text-center" id="container_register">
         <form action="register.php?action=addUser" method="post">
             <!-- <form method="post" action=""> -->
             <div id="div_login">
-                <h1>Register</h1>
+                <h1 id="title_register">Register</h1>
                 <div>
                     <input type="text" class="textbox" id="txt_email" name="txt_email" placeholder="Email" />
                 </div>
@@ -44,7 +44,7 @@
                     <input type="text" class="textbox" id="txt_uname" name="txt_uname" placeholder="Username" />
                 </div>
                 <div>
-                    <input type="password" class="textbox" id="txt_password" name="txt_pwd" placeholder="Password" />
+                    <input type="password" class="textbox" id="txt_pwd" name="txt_pwd" placeholder="Password" />
                 </div>
                 <div>
                     <input type="password" class="textbox" id="txt_password_verify" name="txt_password_verify" placeholder="Password" />
