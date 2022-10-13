@@ -47,6 +47,8 @@
 </div>
 
 <h2>Commentaires</h2>
+<script src="./js/tinymce/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="./js/post.js"></script>
 
 <form action="index.php?action=addComment&id=<?= $post->identifier ?>" method="post">
     <div>

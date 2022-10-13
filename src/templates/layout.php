@@ -44,11 +44,7 @@ require('../src/controllers/layout.php') ;
     </script>
 
 <script src="./js/tinymce/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-      tinymce.init({
-        selector: '#content',
-      });
-    </script>
+<script src="./js/post.js"></script>
 
     <!-- Import JS Files -->
     <script src="../src/js/layout.js" defer></script> 
@@ -167,7 +163,7 @@ require('../src/controllers/layout.php') ;
                         </div>
                         <div>
                             <label for="content">Contenu</label><br />
-                            <textarea class="form-control" id="content" name="content"></textarea>
+                            <textarea class="form-control" id="content" name="content" style="visibility: visible;" ></textarea>
                         </div>
                         <div>
                             <input class="btn btn-lg btn-outline" type="submit" id="submitPost" value="Soumettre Post" />

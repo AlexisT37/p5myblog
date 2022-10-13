@@ -19,10 +19,10 @@ class UpdatePost
             $content = null;
             $leadParagraph = null;
             $title = null;
-            if (!empty($input['content']) && !empty($input['leadParagraph']) && !empty($input['title'])) {
-                $content = $input['content'];
-                $leadParagraph = $input['leadParagraph'];
-                $title = $input['title'];
+            if (!empty($input['modifcontent']) && !empty($input['modifleadParagraph']) && !empty($input['modiftitle'])) {
+                $content = $input['modifcontent'];
+                $leadParagraph = $input['modifleadParagraph'];
+                $title = $input['modiftitle'];
             } else {
                 throw new \Exception('Les données du formulaire sont invalides.');
             }
