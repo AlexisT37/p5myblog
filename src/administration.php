@@ -38,7 +38,7 @@ foreach ($posts as $post) {
             </h3>
             <h4><?= htmlspecialchars($post->leadParagraph) ?></h4>
             <p>
-                <?= nl2br(htmlspecialchars($post->content)); ?>
+                <?php echo $post->content?>
                 <br />
             </p>
         </div>
@@ -62,7 +62,9 @@ foreach ($unvalidatedComments as $unvalidatedComment) {
             ?>
                 (<a href="administrationindex.php?action=ValidateComment&id=<?= $unvalidatedComment->identifier ?>">Valider le commentaire</a>)</p>
     <?php } ?>
-    <p><?= nl2br(htmlspecialchars($unvalidatedComment->comment)) ?></p>
+    <p>
+        <?php echo $unvalidatedComment->comment?>
+    </p>
 <?php
     
 }
