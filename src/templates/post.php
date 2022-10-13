@@ -65,7 +65,9 @@ foreach ($comments as $comment) {
     if ($comment->validated == 1 && $comment->deleted == 0) {
 ?>
         <p><strong><?= htmlspecialchars($users[$comment->identifier]) ?></strong> dernière modifiaction le <?= $comment->frenchModifiedDate ?>
-        <p><?= nl2br(htmlspecialchars($comment->comment)) ?></p>
+        <p>
+            <?php echo $comment->comment?>
+        </p>
 
             <?php if (!empty($loggedUserId) && $comment->author == $loggedUserId) {
 
