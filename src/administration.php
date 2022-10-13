@@ -31,13 +31,13 @@ foreach ($posts as $post) {
 ?>
         <div class="news">
             <h3>
-                <?= htmlspecialchars($post->title); ?>
+                Post: <u><?= htmlspecialchars($post->title); ?></u>
                 <em>le <?= $post->frenchCreationDate; ?></em>
 
                 (<a href="administrationindex.php?action=ValidatePost&id=<?= $post->identifier ?>">Valider le post</a>)</p>
             </h3>
-            <h4><?= htmlspecialchars($post->leadParagraph) ?></h4>
-            <p>
+            <h4>Chapô: <?= htmlspecialchars($post->leadParagraph) ?></h4>
+            <p> Contenu: 
                 <?php echo $post->content?>
                 <br />
             </p>
@@ -55,7 +55,7 @@ foreach ($posts as $post) {
 foreach ($unvalidatedComments as $unvalidatedComment) {
     
 ?>
-        <p><strong><?= htmlspecialchars($unvalidatedComment->identifier) ?></strong> <?= $unvalidatedComment->frenchCreationDate ?>
+        <p><strong>Commentaire </strong> <?= $unvalidatedComment->frenchCreationDate ?>
 
             <?php if (1 == 1) {
 
