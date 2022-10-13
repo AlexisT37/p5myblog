@@ -28,9 +28,13 @@
 
     <h4><?= htmlspecialchars($post->leadParagraph) ?></h4>
 
-    <p>
-        <?= nl2br(htmlspecialchars($post->content)) ?>
-    </p>
+
+<?php
+    echo $post->content;
+?>
+
+
+    
 
     <?php if (!empty($loggedUserId) && $post->userId == $loggedUserId) {
 
@@ -50,7 +54,7 @@
         <textarea id="comment" name="comment"></textarea>
     </div>
     <div>
-        <input type="submit" />
+        <input type="submit" value="Soumettre le commentaire" />
     </div>
 </form>
 

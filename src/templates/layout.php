@@ -46,7 +46,7 @@ require('../src/controllers/layout.php') ;
 <script src="./js/tinymce/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
       tinymce.init({
-        selector: '#content'
+        selector: '#content',
       });
     </script>
 

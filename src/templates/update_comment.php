@@ -11,7 +11,7 @@
       <textarea id="comment" name="comment"><?= htmlspecialchars($comment->comment) ?></textarea>
    </div>
    <div>
-      <input type="submit" />
+      <input type="submit" value="Modifier le commentaire" />
    </div>
 </form>
 

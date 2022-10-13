@@ -18,7 +18,9 @@ foreach ($posts as $post) {
             </h3>
             <h4><?= htmlspecialchars($post->leadParagraph) ?></h4>
             <p>
-                <?= nl2br(htmlspecialchars($post->content)); ?>
+                <?php 
+                echo $post->content
+                ?>
                 <br />
             </p>
         </div>

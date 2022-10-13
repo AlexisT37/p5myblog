@@ -11,7 +11,7 @@
       <textarea id="title" name="title"><?= htmlspecialchars($post->title) ?></textarea>
    </div>
    <div>
-      <label for="leadParagraph">Titre</label><br />
+      <label for="leadParagraph">Chapô</label><br />
       <textarea id="leadParagraph" name="leadParagraph"><?= htmlspecialchars($post->leadParagraph) ?></textarea>
    </div>
    <div>
@@ -19,7 +19,7 @@
       <textarea id="content" name="content"><?= htmlspecialchars($post->content) ?></textarea>
    </div>
    <div>
-      <input type="submit" />
+      <input type="submit" value="Modifier le post" />
    </div>
 </form>
 
