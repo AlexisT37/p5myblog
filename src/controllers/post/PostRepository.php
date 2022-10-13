@@ -2,10 +2,10 @@
 
 namespace Application\Controllers\Post\PostRepository;
 
-require_once('C:/laragon/www/p5myblog/src/classes/JWT.php');
+require_once('../src/classes/JWT.php');
 require_once('../src/lib/database.php');
-require_once('C:/laragon/www/p5myblog/src/config.php');
-require_once('C:/laragon/www/p5myblog/src/model/post.php');
+require_once('../src/config.php');
+require_once('../src/model/post.php');
 require_once('../src/controllers/user/UserRepository.php');
 
 

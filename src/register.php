@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 require_once('classes/JWT.php');
-require_once('C:/laragon/www/p5myblog/src/controllers/user/add.php');
+require_once('../src/controllers/user/add.php');
 
 use Application\Controllers\User\Add\AddUser;
 

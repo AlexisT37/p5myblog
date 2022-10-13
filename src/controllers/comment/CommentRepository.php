@@ -2,10 +2,10 @@
 
 namespace Application\Controllers\Comment\CommentRepository;
 
-require_once('C:/laragon/www/p5myblog/src/lib/database.php');
-require_once('C:/laragon/www/p5myblog/src/classes/JWT.php');
-require_once('C:/laragon/www/p5myblog/src/config.php');
-require_once('C:/laragon/www/p5myblog/src/model/comment.php');
+require_once('../src/lib/database.php');
+require_once('../src/classes/JWT.php');
+require_once('../src/config.php');
+require_once('../src/model/comment.php');
 require_once('../src/controllers/user/UserRepository.php');
 
 

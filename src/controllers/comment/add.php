@@ -2,7 +2,7 @@
 
 namespace Application\Controllers\Comment\Add;
 
-require_once('C:/laragon/www/p5myblog/src/lib/database.php');
+require_once('../src/lib/database.php');
 require_once('../src/controllers/comment/CommentRepository.php');
 
 use Application\Lib\Database\DatabaseConnection;

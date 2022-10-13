@@ -2,9 +2,9 @@
 
 namespace Application\Controllers\Comment\Validate;
 
-require_once('C:/laragon/www/p5myblog/src/classes/JWT.php');
-require_once('C:/laragon/www/p5myblog/src/lib/database.php');
-require_once('C:/laragon/www/p5myblog/src/model/post.php');
+require_once('../src/classes/JWT.php');
+require_once('../src/lib/database.php');
+require_once('../src/model/post.php');
 require_once('../src\controllers\comment\CommentRepository.php');
 
 
