@@ -17,11 +17,13 @@
     "gulp-header": "^1.8.7",
     "gulp-less": "^3.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.5.4",
-    "jquery": "^1.11.3"
+    "gulp-uglify": "^1.5.4"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/BlackrockDigital/startbootstrap-freelancer.git"
+  },
+  "dependencies": {
+    "jquery": "^3.6.1"
   }
 }
