@@ -4,10 +4,6 @@
   "version": "3.3.7+1",
   "homepage": "http://startbootstrap.com/template-overviews/freelancer",
   "author": "Start Bootstrap",
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE"
-  },
   "devDependencies": {
     "bootstrap": "^3.3.7",
     "browser-sync": "^2.13.0",
@@ -23,7 +19,5 @@
     "type": "git",
     "url": "https://github.com/BlackrockDigital/startbootstrap-freelancer.git"
   },
-  "dependencies": {
-    "jquery": "^3.6.1"
-  }
+  "dependencies": {}
 }
