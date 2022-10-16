@@ -38,7 +38,7 @@ foreach ($posts as $post) {
             </h3>
             <h4>Chapô: <?= htmlspecialchars($post->leadParagraph) ?></h4>
             <p> Contenu: 
-                <?php echo $post->content?>
+            <?= htmlspecialchars($post->content) ?>
                 <br />
             </p>
         </div>
@@ -63,7 +63,7 @@ foreach ($unvalidatedComments as $unvalidatedComment) {
                 (<a href="administrationindex.php?action=ValidateComment&id=<?= $unvalidatedComment->identifier ?>">Valider le commentaire</a>)</p>
     <?php } ?>
     <p>
-        <?php echo $unvalidatedComment->comment?>
+    <?= htmlspecialchars($unvalidatedComment->comment) ?>
     </p>
 <?php
     
