@@ -8,7 +8,6 @@ I used PHP 7.4.30, because it is the version I use in a company setting.
 ## Installation
 
 Clone the files on your computer in your www laragon folder.
-Use the composer install command to add the dependencies to the project.
 Create an .env file in the root folder of your project.
 Edit the SECRET line with the value of your choice.
 use the sql file to create your database placeholder
@@ -20,7 +19,7 @@ In your browser, go to the following address once laragon is launched. <http://l
 
 ## Granting Administrator privileges
 
-Although a user is done through the website interface, however if you want to grant the user admin privileges,
+A new user is created through the website interface. However, if you want to grant the user admin privileges,
 it must be done in the user table in the database. This is done for security purposes.
 To grant a user admin priveleges, set the roles value to <'ROLE_ADMIN','ROLE_USER'>
 
