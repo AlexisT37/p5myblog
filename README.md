@@ -10,7 +10,7 @@ I used PHP 7.4.30, because it is the version I use in a company setting.
 Clone the files on your computer in your www laragon folder.
 Create an .env file in the root folder of your project.
 Edit the SECRET line with the value of your choice.
-use the sql file to create your database placeholder
+use the sql file (the name is blogpot.sql)to create your database placeholder
 go to src/lib/database and change the user and password to your liking, the default are root and root
 
 ## Start the application
