@@ -16,7 +16,7 @@ class UserRepository extends User
     public function createUser(string $email,  string $username, string $password): bool
     {
         $statement = $this->connection->getConnection()->prepare(
-            'INSERT INTO user(email, username, password) VALUES(?, ?, ?)'
+            'INSERT INTO user(email, username, password, roles) VALUES(?, ?, ?, "\'ROLE_USER\'")'
         );
         $affectedLines = $statement->execute([$email, $username, $password]);
 
