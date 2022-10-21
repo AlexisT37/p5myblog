@@ -7,6 +7,9 @@ I used PHP 7.4.30, because it is the version I use in a company setting.
 
 ## Installation
 
+You do NOT need to use the composer install command. composer.json and composer.lock are only there to satisfy
+symfony insight requirements.
+
 Clone the files on your computer in your www laragon folder.
 Create an .env file in the root folder of your project.
 Edit the SECRET line with the value of your choice.

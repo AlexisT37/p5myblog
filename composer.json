@@ -1,0 +1,17 @@
+{
+    "name": "hotar/p5myblog",
+    "description": "Blog for Open Classrooms project 5",
+    "type": "project",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Hotar\\P5myblog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "AlexisT37",
+            "email": "alexistroitzky@gmail.com"
+        }
+    ]
+}
