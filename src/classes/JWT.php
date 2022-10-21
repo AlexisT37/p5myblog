@@ -1,6 +1,6 @@
 <?php
 
-require('dotenv.php');
+require_once('dotenv.php');
 
 use Dotenv\DotEnv;
 
