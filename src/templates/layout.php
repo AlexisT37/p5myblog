@@ -48,6 +48,7 @@ require('../src/controllers/layout.php') ;
 
     <!-- Import JS Files -->
     <script src="../src/js/layout.js" defer></script> 
+    <script src="./js/layout.js" defer></script> 
 </head>
 
 <!-- BOOTSTRAPT CONTENT -->
