@@ -6,15 +6,12 @@ $host = getenv('HOST');
 $user = getenv('USER');
 $password = getenv('PASSWORD');
 $dbname = getenv('DBNAME');
+$port = (int)getenv('PORT');
 
-// $host = "localhost"; /* Host name */
-// $user = "root"; /* User */
-// $password = "root"; /* Password */
-// $dbname = "oc4"; /* Database name */
 
 try {
 
-    $con = mysqli_connect($host, $user, $password, $dbname);
+    $con = mysqli_connect($host, $user, $password, $dbname, $port);
 
     // Check connection
     if (!$con) {
